@@ -52,5 +52,5 @@ info의 바로 하위 데이터는
 
 
 - 가져오는 데이터가 Array 면 each 를 사용한다.
-- each 문에선 ${$value.} 이라는 key로 각 object에 접근한다.
+- each 문에선 \${$value.} 이라는 key로 각 object에 접근한다.
 - http://skilldrick.co.uk/tmpl/#slide1
