@@ -277,11 +277,18 @@ lang:
 
 **Swagger의 [사전적 의미][25]처럼 멋지고 으스댈 수 있는 API 문서를 만들어 보자!**
 
+---
+
+> **`NOTE`** 
+Swagger를 이용해서 Java Spring-boot와 유사하게 Code-level에서 API docs를 만들어주는 패키지를 찾았다.
+[swagger-jsdoc][26], [swagger-ui-express][27] 그리고 이 둘을 합쳐서 Express 기반 [**swagger-express-jsdoc**][28]을 만들었다.
+API를 파악해서 자동으로 docs를 만들어 주진 않지만, code에 YAML 형식을 [jsdoc][29] 형식으로 주석 처리하면 자동으로 문서를 만들어준다.
+
 ### References
-- [swagger를 이용한 nodeJS API Document 만들기][26]
-- [Swagger로 API 문서 자동화하기][27]
-- [Swagger tutorial][28]
-- [API 문서화 도구 Swagger v2 사용법][29]
+- [swagger를 이용한 nodeJS API Document 만들기][30]
+- [Swagger로 API 문서 자동화하기][31]
+- [Swagger tutorial][32]
+- [API 문서화 도구 Swagger v2 사용법][33]
 
 
   [1]: https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQoYYweNDfsYwsQ_QlOD5tFNIEE-JL3tqE2fyIZqjMQwntXnIeFzQ
@@ -309,7 +316,11 @@ lang:
   [23]: https://www.json2yaml.com/
   [24]: https://www.json2yaml.com/convert-yaml-to-json
   [25]: https://translate.google.com/?source=gtx#en/ko/swagger
-  [26]: http://rabbit87min.tistory.com/4
-  [27]: http://jojoldu.tistory.com/31
-  [28]: http://idratherbewriting.com/learnapidoc/pubapis_swagger.html
-  [29]: http://itzone.tistory.com/681
+  [26]: https://github.com/Surnet/swagger-jsdoc
+  [27]: https://github.com/scottie1984/swagger-ui-express
+  [28]: https://github.com/SangHakLee/swagger-express-jsdoc
+  [29]: http://usejsdoc.org/
+  [30]: http://rabbit87min.tistory.com/4
+  [31]: http://jojoldu.tistory.com/31
+  [32]: http://idratherbewriting.com/learnapidoc/pubapis_swagger.html
+  [33]: http://itzone.tistory.com/681
