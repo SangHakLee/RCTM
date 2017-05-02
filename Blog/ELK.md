@@ -26,6 +26,15 @@ sudo systemctl enable elasticsearch.service
  sudo service elasticsearch stop
  curl -XGET 'localhost:9200' # check run
  ```
+ 
+ #### ELASTICSEARCH config (External network)
+ Allow All Host
+ ```bash
+vi /etc/elasticsearch/elasticsearch.yml
+
+ ```bash
+ network.host: 0.0.0.0
+ ```
 
 ## ELASTICSEARCH Basic Concept
 TODO
@@ -510,7 +519,7 @@ TODO
 
 ### Install KIBANA
 ```bash
-wget https://artifacts.elastic.co/downloads/kibana/kibana-5.3.2-amd64.deb
+wget https://artifacts.elastic.co/downloads/kibana/kibana-5.3.1-amd64.deb
 dpkg -i kibana-5.3.1.deb
 ```
 
@@ -524,6 +533,20 @@ vi /etc/kibana/kibana.yml
 
 #elasticsearch.url: "http://localhost:9200"
 ```
+
+#### External network
+```bash
+ifconfig | grep inet
+```
+It will returns
+> inet addr:192.169.212.10  Bcast:192.169.212.255  Mask:255.255.255.0
+          inet6 addr: fe80::d00d:d9ff:fecc:9dfd/64 Scope:Link
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+```bash
+server.host: 192.169.212.10
+```
+
 
 ### Start KIBANA
 ```bash
