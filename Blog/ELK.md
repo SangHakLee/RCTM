@@ -91,6 +91,10 @@
       - [Result](#result-2)
       - [Save](#save)
     - [Create Dashboard](#create-dashboard)
+  - [LOGSTASH Install on ubuntu](#logstash-install-on-ubuntu)
+    - [Install LOGSTASH](#install-logstash)
+    - [Config LOGSTASH](#config-logstash)
+    - [Run LOGSTASH](#run-logstash)
 
 <!-- /TOC -->
 
@@ -826,3 +830,37 @@ Go To `Dashboard` Tab (http://localhost:5601/app/kibana#/dashboards)
 `Create a dashboard` -> `Add` -> `Select Dashboard` -> 
 
 ![kibana-visualize-10](https://cloud.githubusercontent.com/assets/9030565/25628552/9429126c-2fa1-11e7-82aa-288162f5ed2b.jpg)
+
+---
+
+## LOGSTASH Install on ubuntu
+![elk](http://blog.arungupta.me/wp-content/uploads/2015/07/elk-stack.png)
+
+> Logstash is an open source, server-side data processing pipeline that ingests data from a multitude of sources simultaneously, transforms it, and then sends it to your favorite “stash.”
+
+### Install LOGSTASH
+**Java must required!!**
+```bash
+wget https://artifacts.elastic.co/downloads/logstash/logstash-5.3.1.deb
+dpkg -i logstash-5.3.1.deb
+```
+- Install path: /usr/share/logstash
+
+### Config LOGSTASH
+```bash
+vi logstash-simple.conf
+```
+
+```bash
+input {
+        stdin { }
+}
+output {
+        stdout { }
+}
+```
+
+### Run LOGSTASH
+```
+sudo /usr/share/logstash/bin/logstash -f ./logstash-simple.conf
+```
