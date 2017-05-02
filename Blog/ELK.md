@@ -4,6 +4,8 @@
   - [ELASTICSEARCH Install on ubuntu](#elasticsearch-install-on-ubuntu)
     - [Install JAVA 8](#install-java-8)
     - [Install ELASTICSEARCH](#install-elasticsearch)
+      - [ELASTICSEARCH Start | Stop | Check](#elasticsearch-start--stop--check)
+      - [ELASTICSEARCH config (External network)](#elasticsearch-config-external-network)
   - [ELASTICSEARCH Basic Concept](#elasticsearch-basic-concept)
     - [ELASTICSEARCH VS RDB](#elasticsearch-vs-rdb)
   - [ELASTICSEARCH CRUD](#elasticsearch-crud)
@@ -120,21 +122,21 @@ sudo systemctl enable elasticsearch.service
 - Config file: /etc/elasticsearch
 - Init script: /etc/init.d/elasticsearch
 
- #### ELASTICSEARCH Start | Stop | Check
- ```bash
- sudo service elasticsearch start
- sudo service elasticsearch stop
- curl -XGET 'localhost:9200' # check run
- ```
+#### ELASTICSEARCH Start | Stop | Check
+```bash
+sudo service elasticsearch start
+sudo service elasticsearch stop
+curl -XGET 'localhost:9200' # check run
+```
  
- #### ELASTICSEARCH config (External network)
- Allow All Host
- ```bash
+#### ELASTICSEARCH config (External network)
+Allow All Host
+```bash
 vi /etc/elasticsearch/elasticsearch.yml
-
- ```bash
- network.host: 0.0.0.0
- ```
+```
+```bash
+network.host: 0.0.0.0
+```
 
 ## ELASTICSEARCH Basic Concept
 TODO
@@ -839,6 +841,8 @@ Go To `Dashboard` Tab (http://localhost:5601/app/kibana#/dashboards)
 > Logstash is an open source, server-side data processing pipeline that ingests data from a multitude of sources simultaneously, transforms it, and then sends it to your favorite “stash.”
 
 ### Install LOGSTASH
+[![Alt text for your video](http://img.youtube.com/vi/FpEubrKOoVE/0.jpg)](http://www.youtube.com/watch?v=FpEubrKOoVE)
+
 **Java must required!!**
 ```bash
 wget https://artifacts.elastic.co/downloads/logstash/logstash-5.3.1.deb
