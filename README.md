@@ -1,2 +1,2 @@
 # RCTM
-Record control the memory..
+Record control the memory.
