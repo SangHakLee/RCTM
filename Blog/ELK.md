@@ -97,6 +97,22 @@
     - [Install LOGSTASH](#install-logstash)
     - [Config LOGSTASH](#config-logstash)
     - [Run LOGSTASH](#run-logstash)
+  - [Practical data analysis using ELK](#practical-data-analysis-using-elk)
+    - [Collcet Datas](#collcet-datas)
+      - [Datas site](#datas-site)
+      - [Population analysis Datas](#population-analysis-datas)
+      - [Get Ready-to-use Datas](#get-ready-to-use-datas)
+    - [Check ELASTICSEARCH & KIBANA are running](#check-elasticsearch--kibana-are-running)
+      - [Check KIBANA](#check-kibana)
+        - [Running](#running)
+        - [Stopped](#stopped)
+      - [Check ELASTICSEARCH](#check-elasticsearch)
+        - [Running](#running-1)
+        - [Stopped](#stopped-1)
+    - [Config LOGSTASH](#config-logstash-1)
+      - [OR Download logstash.conf file](#or-download-logstashconf-file)
+    - [Run LOGSTASH output to ELASTICSEARCH](#run-logstash-output-to-elasticsearch)
+    - [Go KIBANA](#go-kibana)
 
 <!-- /TOC -->
 
@@ -868,3 +884,151 @@ output {
 ```
 sudo /usr/share/logstash/bin/logstash -f ./logstash-simple.conf
 ```
+
+## Practical data analysis using ELK
+
+### Collcet Datas
+
+#### Datas site
+https://catalog.data.gov/dataset
+
+#### Population analysis Datas
+https://catalog.data.gov/dataset/population-by-country-1980-2010-d0250
+
+#### Get Ready-to-use Datas
+```bash
+wget https://raw.githubusercontent.com/minsuk-heo/BigData/master/ch06/populationbycountry19802010millions.csv
+```
+
+### Check ELASTICSEARCH & KIBANA are running
+
+#### Check KIBANA
+``` bash
+ps -ef | grep kibana
+```
+
+##### Running
+```bash
+root     29968 29933  9 16:58 pts/0    00:00:06 /usr/share/kibana/bin/../node/bin/node --no-warnings /usr/share/kibana/bin/../src/cli
+root     30036 30018  0 16:59 pts/1    00:00:00 grep --color=auto kibana
+```
+
+##### Stopped
+```bash
+root     29957 29933  0 16:57 pts/0    00:00:00 grep --color=auto kibana
+```
+`Restart`
+```bash
+sudo /usr/share/kibana/bin/kibana
+```
+
+#### Check ELASTICSEARCH
+```bash
+service elasticsearch status
+
+## OR
+
+curl -XGET 'localhost:9200'
+```
+
+##### Running
+```bash
+● elasticsearch.service - Elasticsearch ....
+
+## OR
+
+{
+  "name" : "lPQjk0j",
+  "cluster_name" : "elasticsearch",
+  "cluster_uuid" : "MORDslcmSKywLz4ReZtsIA",
+  "version" : {
+    "number" : "5.3.1",
+    "build_hash" : "5f9cf58",
+    "build_date" : "2017-04-17T15:52:53.846Z",
+    "build_snapshot" : false,
+    "lucene_version" : "6.4.2"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
+
+##### Stopped
+```bash
+curl: (7) Failed to connect to localhost port 9200: Connection refused
+```
+`Restart`
+```bash
+sudo service elasticsearch start
+```
+
+### Config LOGSTASH
+```bash
+vi logstash.conf
+```
+```bash
+input {
+  file {
+    path => "/home/minsuk/Documents/git-repo/BigData/ch06/populationbycountry19802010millions.csv"
+    start_position => "beginning"  
+    sincedb_path => "/dev/null"  
+  }
+}
+filter {
+  csv {
+      separator => ","
+      columns => ["Country","1980","1981","1982","1983","1984","1985","1986","1987","1988","1989","1990","1991","1992","1993","1994","1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010"]
+  }
+  mutate {convert => ["1980", "float"]}
+  mutate {convert => ["1981", "float"]}
+  mutate {convert => ["1982", "float"]}
+  mutate {convert => ["1983", "float"]}
+  mutate {convert => ["1984", "float"]}
+  mutate {convert => ["1985", "float"]}
+  mutate {convert => ["1986", "float"]}
+  mutate {convert => ["1987", "float"]}
+  mutate {convert => ["1988", "float"]}
+  mutate {convert => ["1989", "float"]}
+  mutate {convert => ["1990", "float"]}
+  mutate {convert => ["1991", "float"]}
+  mutate {convert => ["1992", "float"]}
+  mutate {convert => ["1993", "float"]}
+  mutate {convert => ["1994", "float"]}
+  mutate {convert => ["1995", "float"]}
+  mutate {convert => ["1996", "float"]}
+  mutate {convert => ["1997", "float"]}
+  mutate {convert => ["1998", "float"]}
+  mutate {convert => ["1999", "float"]}
+  mutate {convert => ["2000", "float"]}
+  mutate {convert => ["2001", "float"]}
+  mutate {convert => ["2002", "float"]}
+  mutate {convert => ["2003", "float"]}
+  mutate {convert => ["2004", "float"]}
+  mutate {convert => ["2005", "float"]}
+  mutate {convert => ["2006", "float"]}
+  mutate {convert => ["2007", "float"]}
+  mutate {convert => ["2008", "float"]}
+  mutate {convert => ["2009", "float"]}
+  mutate {convert => ["2010", "float"]}
+}
+output {  
+    elasticsearch {
+        hosts => "localhost"
+        index => "population"
+    }
+    stdout {}
+}
+```
+- input -> file -> path
+  - Edit `Your` own file path
+  - e.g.) **"/root/populationbycountry19802010millions.csv"**
+
+#### OR Download logstash.conf file
+```bash
+wget https://raw.githubusercontent.com/minsuk-heo/BigData/master/ch06/logstash.conf
+```
+
+### Run LOGSTASH output to ELASTICSEARCH
+/usr/share/logstash/bin/logstash -f ./logstash.conf
+
+### Go KIBANA
+http://localhost:5601/app/kibana#/management?_g=()
