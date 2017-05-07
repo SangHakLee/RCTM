@@ -1,12 +1,17 @@
 <!-- TOC -->
 
 - [ELK](#elk)
+  - [Data Science](#data-science)
+    - [ELK Stack](#elk-stack)
+      - [[ELASTICSEARCH](https://en.wikipedia.org/wiki/Elasticsearch)](#elasticsearchhttpsenwikipediaorgwikielasticsearch)
+      - [[LOGSTASH](https://wikitech.wikimedia.org/wiki/Logstash)](#logstashhttpswikitechwikimediaorgwikilogstash)
+      - [[KIBANA](https://en.wikipedia.org/wiki/Kibana)](#kibanahttpsenwikipediaorgwikikibana)
   - [ELASTICSEARCH Install on ubuntu](#elasticsearch-install-on-ubuntu)
     - [Install JAVA 8](#install-java-8)
     - [Install ELASTICSEARCH](#install-elasticsearch)
       - [ELASTICSEARCH Start | Stop | Check](#elasticsearch-start--stop--check)
       - [ELASTICSEARCH config (External network)](#elasticsearch-config-external-network)
-  - [ELASTICSEARCH Basic Concept](#elasticsearch-basic-concept)
+  - [ELASTICSEARCH Basic Concepts](#elasticsearch-basic-concepts)
     - [ELASTICSEARCH VS RDB](#elasticsearch-vs-rdb)
   - [ELASTICSEARCH CRUD](#elasticsearch-crud)
     - [Verify Index](#verify-index)
@@ -114,8 +119,8 @@
     - [Run LOGSTASH output to ELASTICSEARCH](#run-logstash-output-to-elasticsearch)
     - [Go KIBANA](#go-kibana)
       - [Add pattern](#add-pattern)
-      - [Discover Tab](#discover-tab)
-      - [Visualize Tab](#visualize-tab)
+    - [Discover Tab](#discover-tab)
+    - [Visualize Tab](#visualize-tab)
   - [Practical data analysis using ELK 1 - Stock](#practical-data-analysis-using-elk-1---stock)
     - [Collcet Datas](#collcet-datas-1)
       - [Datas site](#datas-site-1)
@@ -124,12 +129,45 @@
     - [Check ELASTICSEARCH & KIBANA are running](#check-elasticsearch--kibana-are-running-1)
     - [Config LOGSTASH](#config-logstash-2)
       - [OR Download logstash_stock.conf file](#or-download-logstash_stockconf-file)
+    - [Run LOGSTASH output to ELASTICSEARCH](#run-logstash-output-to-elasticsearch-1)
+    - [Go KIBANA](#go-kibana-1)
+      - [Add pattern](#add-pattern-1)
+    - [Visualize Tab](#visualize-tab-1)
+      - [Line chart](#line-chart)
+        - [Result](#result-3)
+    - [Dashboard Tab](#dashboard-tab)
 
 <!-- /TOC -->
 
 # ELK
 
+## Data Science
+[![Data Science](http://img.youtube.com/vi/J2PIBQgEpC4/0.jpg)](https://youtu.be/J2PIBQgEpC4)
+
+### ELK Stack
+![elk](http://blog.arungupta.me/wp-content/uploads/2015/07/elk-stack.png)
+
+#### [ELASTICSEARCH](https://en.wikipedia.org/wiki/Elasticsearch)
+https://www.elastic.co/kr/products/elasticsearch
+
+[Lucene](https://en.wikipedia.org/wiki/Apache_Lucene) 기반 검색 엔진
+[HTTP](https://ko.wikipedia.org/wiki/HTTP) 웹 인터페이스와 [JSON](https://ko.wikipedia.org/wiki/JSON) 문서 객체를 이용해 분산된 multitenant 가능한 검색을 지원한다.
+
+#### [LOGSTASH](https://wikitech.wikimedia.org/wiki/Logstash)
+https://www.elastic.co/kr/products/logstash
+
+server-side 처리 파이프라인, 다양한 소스에서 동시에 Data를 수집-변환 후 Stash로 전송
+
+#### [KIBANA](https://en.wikipedia.org/wiki/Kibana)
+https://www.elastic.co/kr/products/kibana
+
+ELASTICSEARCH data를 시각화하고 탐색을 지원
+
+
+
+
 ## ELASTICSEARCH Install on ubuntu
+[![Data Science](http://img.youtube.com/vi/w7aHzIkD3D4/0.jpg)](https://youtu.be/w7aHzIkD3D4)
 
 ### Install JAVA 8
 ```bash
@@ -165,12 +203,42 @@ vi /etc/elasticsearch/elasticsearch.yml
 network.host: 0.0.0.0
 ```
 
-## ELASTICSEARCH Basic Concept
-TODO
+
+
+
+## ELASTICSEARCH Basic Concepts 
+[![Basic Concepts](http://img.youtube.com/vi/B1Aq2GQ4E78/0.jpg)](https://youtu.be/B1Aq2GQ4E78)
+
 ### ELASTICSEARCH VS RDB
+
+| ELASTICSEARCH | RDB      |
+|---------------|----------|
+| Index         | Database |
+| Type          | Table    |
+| Document      | Row      |
+| Field         | Column   |
+| Mapping       | Schema   |
+
+---
+
+http://d2.naver.com/helloworld/273788
+
+|    RDB   |     ELASTICSEARCH     |
+|:--------:|:---------------------:|
+| Database |         Index         |
+| Table    | Type                  |
+| Row      | Document              |
+| Column   | Field                 |
+| Schema   | Mapping               |
+| Index    | Everything is indexed |
+| SQL      | Query                 |
+
+
 
 
 ## ELASTICSEARCH CRUD
+[![Data Science](http://img.youtube.com/vi/lt6oPHjZMXg/0.jpg)](https://youtu.be/lt6oPHjZMXg)
+
 | ELASTICSEARCH | RDB    | CRUD   |
 |---------------|--------|--------|
 | GET           | SELECT | READ   |
@@ -868,7 +936,7 @@ Go To `Dashboard` Tab (http://localhost:5601/app/kibana#/dashboards)
 > Logstash is an open source, server-side data processing pipeline that ingests data from a multitude of sources simultaneously, transforms it, and then sends it to your favorite “stash.”
 
 ### Install LOGSTASH
-[![Alt text for your video](http://img.youtube.com/vi/FpEubrKOoVE/0.jpg)](http://www.youtube.com/watch?v=FpEubrKOoVE)
+[![logstash install](http://img.youtube.com/vi/FpEubrKOoVE/0.jpg)](http://www.youtube.com/watch?v=FpEubrKOoVE)
 
 **Java must required!!**
 ```bash
