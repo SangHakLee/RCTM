@@ -97,7 +97,7 @@
     - [Install LOGSTASH](#install-logstash)
     - [Config LOGSTASH](#config-logstash)
     - [Run LOGSTASH](#run-logstash)
-  - [Practical data analysis using ELK](#practical-data-analysis-using-elk)
+  - [Practical data analysis using ELK 1 - Population](#practical-data-analysis-using-elk-1---population)
     - [Collcet Datas](#collcet-datas)
       - [Datas site](#datas-site)
       - [Population analysis Datas](#population-analysis-datas)
@@ -113,6 +113,17 @@
       - [OR Download logstash.conf file](#or-download-logstashconf-file)
     - [Run LOGSTASH output to ELASTICSEARCH](#run-logstash-output-to-elasticsearch)
     - [Go KIBANA](#go-kibana)
+      - [Add pattern](#add-pattern)
+      - [Discover Tab](#discover-tab)
+      - [Visualize Tab](#visualize-tab)
+  - [Practical data analysis using ELK 1 - Stock](#practical-data-analysis-using-elk-1---stock)
+    - [Collcet Datas](#collcet-datas-1)
+      - [Datas site](#datas-site-1)
+      - [Stock analysis Datas - Facebook](#stock-analysis-datas---facebook)
+      - [Get Ready-to-use Datas](#get-ready-to-use-datas-1)
+    - [Check ELASTICSEARCH & KIBANA are running](#check-elasticsearch--kibana-are-running-1)
+    - [Config LOGSTASH](#config-logstash-2)
+      - [OR Download logstash_stock.conf file](#or-download-logstash_stockconf-file)
 
 <!-- /TOC -->
 
@@ -885,7 +896,7 @@ output {
 sudo /usr/share/logstash/bin/logstash -f ./logstash-simple.conf
 ```
 
-## Practical data analysis using ELK
+## Practical data analysis using ELK 1 - Population
 
 ### Collcet Datas
 
@@ -1032,3 +1043,92 @@ wget https://raw.githubusercontent.com/minsuk-heo/BigData/master/ch06/logstash.c
 
 ### Go KIBANA
 http://localhost:5601/app/kibana#/management?_g=()
+
+#### Add pattern
+![population-analysis-1](https://cloud.githubusercontent.com/assets/9030565/25779116/9b082ef8-334b-11e7-8384-4cb7977d416d.jpg)
+
+### Discover Tab
+http://localhost:5601/app/kibana#/discover?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:now-1y,mode:quick,to:now))&_a=(columns:!(_source),index:population,interval:auto,query:'',sort:!('@timestamp',desc))))
+![population-analysis-2](https://cloud.githubusercontent.com/assets/9030565/25779142/0d52b078-334c-11e7-9745-01e6237e61a3.jpg)
+
+### Visualize Tab
+
+
+
+## Practical data analysis using ELK 1 - Stock
+http://blog.webkid.io/visualize-datasets-with-elk/
+
+### Collcet Datas
+
+#### Datas site
+https://finance.yahoo.com
+
+#### Stock analysis Datas - Facebook
+https://finance.yahoo.com/quote/FB/history?period1=1336316400&period2=1494082800&interval=1d&filter=history&frequency=1d
+
+#### Get Ready-to-use Datas
+```bash
+wget https://raw.githubusercontent.com/minsuk-heo/BigData/master/ch06/table.csv
+```
+
+### Check ELASTICSEARCH & KIBANA are running
+
+### Config LOGSTASH
+```bash
+vi logstash_stock.conf
+```
+```bash
+input {
+  file {
+    path => "/home/minsuk/Documents/git-repo/BigData/ch06/table.csv"
+    start_position => "beginning"
+    sincedb_path => "/dev/null"    
+  }
+}
+filter {
+  csv {
+      separator => ","
+      columns => ["Date","Open","High","Low","Close","Volume","Adj Close"]
+  }
+  mutate {convert => ["Open", "float"]}
+  mutate {convert => ["High", "float"]}
+  mutate {convert => ["Low", "float"]}
+  mutate {convert => ["Close", "float"]}
+}
+output {  
+    elasticsearch {
+        hosts => "localhost"
+        index => "stock"
+    }
+    stdout {}
+}
+```
+- input -> file -> path
+  - Edit `Your` own file path
+  - e.g.) **"/root/table.csv"**
+
+#### OR Download logstash_stock.conf file
+```bash
+wget https://raw.githubusercontent.com/minsuk-heo/BigData/master/ch06/logstash_stock.conf
+```
+
+### Run LOGSTASH output to ELASTICSEARCH
+/usr/share/logstash/bin/logstash -f ./logstash_stock.conf
+
+### Go KIBANA
+http://localhost:5601/app/kibana#/management?_g=()
+
+#### Add pattern
+![stock-analysis-1](https://cloud.githubusercontent.com/assets/9030565/25779296/ba32ffa2-334f-11e7-9374-1178adef72b4.jpg)
+
+### Visualize Tab
+
+#### Line chart
+![stock-analysis-2](https://cloud.githubusercontent.com/assets/9030565/25779314/3bfa2e16-3350-11e7-92e7-12dcef6ff49b.jpg)
+
+##### Result
+![stock-analysis-3](https://cloud.githubusercontent.com/assets/9030565/25779332/6bd71112-3350-11e7-8bab-e3722974922d.jpg)
+
+
+### Dashboard Tab
+![stock-analysis-4](https://cloud.githubusercontent.com/assets/9030565/25779363/0bc7af60-3351-11e7-9899-12b8e39f5961.jpg)
