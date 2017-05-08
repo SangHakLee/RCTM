@@ -12,7 +12,7 @@
       - [ELASTICSEARCH Start | Stop | Check](#elasticsearch-start--stop--check)
       - [ELASTICSEARCH config (External network)](#elasticsearch-config-external-network)
   - [ELASTICSEARCH Basic Concepts](#elasticsearch-basic-concepts)
-    - [ELASTICSEARCH VS RDB](#elasticsearch-vs-rdb)
+    - [ELASTICSEARCH vs RDB](#elasticsearch-vs-rdb)
   - [ELASTICSEARCH CRUD](#elasticsearch-crud)
     - [Verify Index](#verify-index)
     - [Create Index](#create-index)
@@ -48,9 +48,8 @@
       - [Search - Request body](#search---request-body)
   - [ELASTICSEARCH Aggregation(Metric)](#elasticsearch-aggregationmetric)
     - [Add Documents](#add-documents-1)
-    - [AVG Aggregation](#avg-aggregation)
-      - [Get avg_points_aggs.json](#get-avg_points_aggsjson)
     - [Average](#average)
+      - [Get avg_points_aggs.json](#get-avg_points_aggsjson)
     - [Max](#max)
       - [Get max_points_aggs.json](#get-max_points_aggsjson)
     - [Min](#min)
@@ -60,6 +59,11 @@
     - [Stats](#stats)
       - [Get stats_points_aggs.json](#get-stats_points_aggsjson)
   - [ELASTICSEARCH Aggregation(Bucket)](#elasticsearch-aggregationbucket)
+    - [Create Basketball Index](#create-basketball-index)
+    - [Mapping Basketball](#mapping-basketball)
+    - [Add Basketball Documents](#add-basketball-documents)
+    - [Term Aggs - Group by(team)](#term-aggs---group-byteam)
+    - [Stats Aggs - Group by(team)](#stats-aggs---group-byteam)
   - [KIBANA Install on ubuntu](#kibana-install-on-ubuntu)
     - [Install KIBANA](#install-kibana)
     - [Config](#config)
@@ -195,13 +199,15 @@ curl -XGET 'localhost:9200' # check run
 ```
  
 #### ELASTICSEARCH config (External network)
-Allow All Host
+Allow All Host (AWS 같은 클라우드 서비스를 사용하는 경우 외부에서 접속하기 때문에 네트워크 설정 필요)
 ```bash
 vi /etc/elasticsearch/elasticsearch.yml
 ```
 ```bash
 network.host: 0.0.0.0
 ```
+**이런 경우 앞으로 사용될 `localhost`를 각자의 `IP`로 변경한다.**
+**`locahlost:9200` -> `119.10.10.10:9200`**
 
 
 
@@ -209,7 +215,7 @@ network.host: 0.0.0.0
 ## ELASTICSEARCH Basic Concepts 
 [![Basic Concepts](http://img.youtube.com/vi/B1Aq2GQ4E78/0.jpg)](https://youtu.be/B1Aq2GQ4E78)
 
-### ELASTICSEARCH VS RDB
+### ELASTICSEARCH vs RDB
 
 | ELASTICSEARCH | RDB      |
 |---------------|----------|
@@ -237,7 +243,7 @@ http://d2.naver.com/helloworld/273788
 
 
 ## ELASTICSEARCH CRUD
-[![Data Science](http://img.youtube.com/vi/lt6oPHjZMXg/0.jpg)](https://youtu.be/lt6oPHjZMXg)
+[![ELASTICSEARCH CRUD](http://img.youtube.com/vi/lt6oPHjZMXg/0.jpg)](https://youtu.be/lt6oPHjZMXg)
 
 | ELASTICSEARCH | RDB    | CRUD   |
 |---------------|--------|--------|
@@ -294,12 +300,21 @@ curl -XPOST localhost:9200/classes/class/1/ -d @oneclass.json
 wget https://raw.githubusercontent.com/minsuk-heo/BigData/master/ch01/oneclass.json
 ```
 
+
+
+
 ## ELASTICSEARCH Update
+[![ELASTICSEARCH Update](http://img.youtube.com/vi/dHcvUgvwPsc/0.jpg)](https://youtu.be/dHcvUgvwPsc)
+
 ```bash
 curl -XPOST localhost:9200/classes/class/1/ -d '{"title":"Algorithm", "professor":"John"}'
 ```
+- `classes` : Index ( RDB's Database )
+- `class` : Type ( RDB's Table )
+- `1` : Document ( RDB's Row )
 
 ### Add Field
+RDB's Column
 
 #### Way 1. Basic
 ```bash
@@ -315,7 +330,14 @@ curl -XGET localhost:9200/classes/class/1?pretty
 curl -XPOST localhost:9200/classes/class/1/_update -d '{"script":"ctx._source.unit +=5"}'
 ```
 
+
+
+
 ## ELASTICSEARCH Bulk
+[![ELASTICSEARCH Bulk](http://img.youtube.com/vi/t0H4dmxmOjA/0.jpg)](https://youtu.be/t0H4dmxmOjA)
+
+> File로 된 여러 개의 Documents를 한 번에 저장
+
 ```bash
 curl -XPOST localhost:9200/_bulk?pretty --data-binary @classes.json
 ```
@@ -325,10 +347,12 @@ curl -XPOST localhost:9200/_bulk?pretty --data-binary @classes.json
 wget https://raw.githubusercontent.com/minsuk-heo/BigData/master/ch02/classes.json#
 ```
 
-## ELASTICSEARCH Mapping
-RDB's Schema
 
-Set Data type
+
+
+## ELASTICSEARCH Mapping
+[![ELASTICSEARCH Mapping](http://img.youtube.com/vi/uzPTOgXe7-Q/0.jpg)](https://youtu.be/uzPTOgXe7-Q)
+> RDB's Schema. 효율적인 검색을 위해서 데이터의 타입을 정의하는 것
 
 ### Step 1. Create Index
 ```bash
@@ -362,7 +386,7 @@ curl -XPUT localhost:9200/classes
 ```
 
 #### Success
-```
+```json
 {
   "classes" : {
     "aliases" : { },
@@ -382,6 +406,8 @@ curl -XPUT localhost:9200/classes
   }
 }
 ```
+> Mapping 없이 Index만 생성했기 때문에, `classes.mappings` 의 값이 빈 객체이다.
+
 
 ### Step 2. Create Mapping
 #### 2-1 Get classesRating_mapping.json
@@ -455,15 +481,22 @@ curl -XGET localhost:9200/classes?pretty
 
 #### 2-4 Add Documents
 ```bash
+wget https://raw.githubusercontent.com/minsuk-heo/BigData/master/ch02/classes.json
+```
+```bash
 curl -XPOST localhost:9200/_bulk?pretty --data-binary @classes.json
 ```
 
 ##### Verify Documents
 ```bash
-curl XGET localhost:9200/classes/class/1?pretty
+curl -XGET localhost:9200/classes/class/1?pretty
 ```
 
+
+
+
 ## ELASTICSEARCH Search
+[![ELASTICSEARCH Search](http://img.youtube.com/vi/nOjGsbXl7ao/0.jpg)](https://youtu.be/nOjGsbXl7ao)
 
 ### Get simple_basketball.json
 ```bash
@@ -583,14 +616,26 @@ curl XGET localhost:9200/basketball/record/_search -d '{
 [search-request-body](https://www.elastic.co/guide/en/elasticsearch/reference/5.3/search-request-body.html)
 
 
+
+
 ## ELASTICSEARCH Aggregation(Metric)
+[![ELASTICSEARCH Aggregation(Metric)](http://img.youtube.com/vi/BSLtEku8gKA/0.jpg)](https://youtu.be/BSLtEku8gKA)
+> 평균, 합, 최소, 최대 등 산술 분석을 제공
 
 ### Add Documents
+```bash
+wget https://raw.githubusercontent.com/minsuk-heo/BigData/master/ch03/simple_basketball.json
+```
+
 ```bash
 curl -XPOST localhost:9200/_bulk --data-binary @simple_basketball.json
 ```
 
-### AVG Aggregation
+### Average
+```
+curl -XGET localhost:9200/_search?pretty --data-binary @avg_points_aggs.json
+```
+
 #### Get avg_points_aggs.json 
 ```bash
 wget https://raw.githubusercontent.com/minsuk-heo/BigData/master/ch03/avg_points_aggs.json
@@ -607,11 +652,6 @@ wget https://raw.githubusercontent.com/minsuk-heo/BigData/master/ch03/avg_points
     }
   }
 }
-```
-
-### Average
-```
-curl -XGET localhost:9200/_search?pretty --data-binary @avg_points_aggs.json
 ```
 
 ### Max
@@ -684,6 +724,8 @@ wget https://raw.githubusercontent.com/minsuk-heo/BigData/master/ch03/sum_points
 ```
 
 ### Stats
+> 평균, 합, 최소, 최대 한 번에 도출
+
 ```
 curl -XGET localhost:9200/_search?pretty --data-binary @stats_points_aggs.json
 ```
@@ -706,11 +748,58 @@ wget https://raw.githubusercontent.com/minsuk-heo/BigData/master/ch03/stats_poin
 }
 ```
 
-## ELASTICSEARCH Aggregation(Bucket)
 
-TODO
+
+
+## ELASTICSEARCH Aggregation(Bucket)
+[![ELASTICSEARCH Aggregation(Bucket)](http://img.youtube.com/vi/KzJiO8IEgBk/0.jpg)](https://youtu.be/KzJiO8IEgBk)
+> RDB's `Group by`. 데이터를 일정 기준으로 묶어서 결과를 도출.
+
+### Create Basketball Index
+```bash
+curl -XPUT localhost:9200/basketball
+```
+
+### Mapping Basketball
+```bash
+wget https://raw.githubusercontent.com/minsuk-heo/BigData/master/ch04/basketball_mapping.json
+```
+
+```bash
+curl -XPUT localhost:9200/basketball/record/_mapping -d @basketball_mapping.json
+```
+
+### Add Basketball Documents
+```bash
+wget https://raw.githubusercontent.com/minsuk-heo/BigData/master/ch04/twoteam_basketball.json
+```
+
+```bash
+curl -XPOST localhost:9200/_bulk --data-binary @twoteam_basketball.json
+```
+
+### Term Aggs - Group by(team)
+```bash
+wget https://raw.githubusercontent.com/minsuk-heo/BigData/master/ch04/terms_aggs.json
+```
+
+```bash
+curl -XGET localhost:9200/_search?pretty --data-binary @terms_aggs.json
+```
+
+### Stats Aggs - Group by(team)
+```bash
+wget https://raw.githubusercontent.com/minsuk-heo/BigData/master/ch04/stats_by_team.json
+```
+
+```bash
+curl -XGET localhost:9200/_search?pretty --data-binary @stats_by_team.json
+```
+
 
 ---
+
+
 
 ## KIBANA Install on ubuntu
 
