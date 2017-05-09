@@ -827,8 +827,8 @@ vi /etc/kibana/kibana.yml
 ```
 
 
-#### External network
-Allow All Host (AWS 같은 클라우드 서비스를 사용하는 경우 외부에서 접속하기 때문에 네트워크 설정 필요)
+#### Network
+AWS 같은 클라우드 서비스를 사용하는 경우 localhost가 아닌 내부 IP 설정
 
 ```bash
 ifconfig | grep inet
