@@ -79,7 +79,7 @@
     - [Step 2. Select Item](#step-2-select-item)
     - [Step 3. Filtering](#step-3-filtering)
     - [Step 4. Toggle](#step-4-toggle)
-  - [KIBANA Visualize](#kibana-visualize)
+  - [KIBANA Visualize 1](#kibana-visualize-1)
     - [Vertical bar chart](#vertical-bar-chart)
       - [metrics](#metrics)
       - [buckets](#buckets)
@@ -107,7 +107,7 @@
     - [Config LOGSTASH](#config-logstash)
     - [Run LOGSTASH](#run-logstash)
   - [Practical data analysis using ELK 1 - Population](#practical-data-analysis-using-elk-1---population)
-    - [Collcet Datas](#collcet-datas)
+    - [Collect Datas](#collect-datas)
       - [Datas site](#datas-site)
       - [Population analysis Datas](#population-analysis-datas)
       - [Get Ready-to-use Datas](#get-ready-to-use-datas)
@@ -125,12 +125,14 @@
       - [Add pattern](#add-pattern)
     - [Discover Tab](#discover-tab)
     - [Visualize Tab](#visualize-tab)
-  - [Practical data analysis using ELK 1 - Stock](#practical-data-analysis-using-elk-1---stock)
-    - [Collcet Datas](#collcet-datas-1)
+  - [Practical data analysis using ELK 2 - Stock](#practical-data-analysis-using-elk-2---stock)
+    - [Collcet Datas](#collcet-datas)
       - [Datas site](#datas-site-1)
       - [Stock analysis Datas - Facebook](#stock-analysis-datas---facebook)
       - [Get Ready-to-use Datas](#get-ready-to-use-datas-1)
     - [Check ELASTICSEARCH & KIBANA are running](#check-elasticsearch--kibana-are-running-1)
+      - [Check ELASTICSEARCH](#check-elasticsearch-1)
+      - [Check KIBANA](#check-kibana-1)
     - [Config LOGSTASH](#config-logstash-2)
       - [OR Download logstash_stock.conf file](#or-download-logstash_stockconf-file)
     - [Run LOGSTASH output to ELASTICSEARCH](#run-logstash-output-to-elasticsearch-1)
@@ -244,6 +246,7 @@ http://d2.naver.com/helloworld/273788
 
 ## ELASTICSEARCH CRUD
 [![ELASTICSEARCH CRUD](http://img.youtube.com/vi/lt6oPHjZMXg/0.jpg)](https://youtu.be/lt6oPHjZMXg)
+> ELASTICSEARCH에 Document(Row)를 삽입, 삭제, 조회
 
 | ELASTICSEARCH | RDB    | CRUD   |
 |---------------|--------|--------|
@@ -305,6 +308,7 @@ wget https://raw.githubusercontent.com/minsuk-heo/BigData/master/ch01/oneclass.j
 
 ## ELASTICSEARCH Update
 [![ELASTICSEARCH Update](http://img.youtube.com/vi/dHcvUgvwPsc/0.jpg)](https://youtu.be/dHcvUgvwPsc)
+> ELASTICSEARCH에 Document(Row)를 수정
 
 ```bash
 curl -XPOST localhost:9200/classes/class/1/ -d '{"title":"Algorithm", "professor":"John"}'
@@ -802,10 +806,12 @@ curl -XGET localhost:9200/_search?pretty --data-binary @stats_by_team.json
 
 
 ## KIBANA Install on ubuntu
+[![KIBANA](http://img.youtube.com/vi/CV_SuOxk_nM/0.jpg)](https://youtu.be/CV_SuOxk_nM)
 
 ### Install KIBANA
 ```bash
 wget https://artifacts.elastic.co/downloads/kibana/kibana-5.3.1-amd64.deb
+
 dpkg -i kibana-5.3.1.deb
 ```
 
@@ -820,7 +826,10 @@ vi /etc/kibana/kibana.yml
 #elasticsearch.url: "http://localhost:9200"
 ```
 
+
 #### External network
+Allow All Host (AWS 같은 클라우드 서비스를 사용하는 경우 외부에서 접속하기 때문에 네트워크 설정 필요)
+
 ```bash
 ifconfig | grep inet
 ```
@@ -829,17 +838,23 @@ It will returns
 > inet6 addr: fe80::d00d:d9ff:fecc:9dfd/64 Scope:Link
 > inet addr:127.0.0.1  Mask:255.0.0.0
 > inet6 addr: ::1/128 Scope:Host
+
 ```bash
 server.host: 192.169.212.10
 ```
-
 
 ### Start KIBANA
 ```bash
 sudo /usr/share/kibana/bin/kibana
 ```
 
+
+
+
 ## KIBANA Management
+[![KIBANA Management](http://img.youtube.com/vi/7mwK04buD4E/0.jpg)](https://youtu.be/7mwK04buD4E)
+> ELASTICSEARCH 저장된 데이터 중 어떤 Index( RDB's Database )를 시각화할지 정한다.
+
 ### Step 1. Set Basketball Data
 ```bash
 curl -XDELETE localhost:9200/basketball
@@ -852,10 +867,12 @@ curl -XPUT localhost:9200/basketball/record/_mappin -d @basketball_mapping.json
 
 wget https://raw.githubusercontent.com/minsuk-heo/BigData/master/ch05/bulk_basketball.json
 
-curl -XPOST localhost:9200/_bulk --data-binary @bu k_basketball.json
+curl -XPOST localhost:9200/_bulk --data-binary @bulk_basketball.json
 ```
 
 ### Step 2. Access KIBANA
+> AWS 같은 클라우드를 사용하면 `localhost` 를 각자의 IP 주소로 바꾼다.
+
 http://localhost:5601
 
 Go To `Management` Tab (http://localhost:5601/app/kibana#/management/kibana/index?_g=())
@@ -872,7 +889,12 @@ Go To `Management` Tab (http://localhost:5601/app/kibana#/management/kibana/inde
 #### Created
 ![kibana-management-2](https://cloud.githubusercontent.com/assets/9030565/25624795/85eb9226-2f95-11e7-941e-7a8fc3d2f3b9.jpg)
 
+
+
+
 ## KIBANA Discover
+[![KIBANA Discover](http://img.youtube.com/vi/ebXczuiMbEQ/0.jpg)](https://youtu.be/ebXczuiMbEQ)
+> ELASTICSEARCH 의 저장된 데이터를 JSON, Table 형식으로 보여준다. Filter를 이용해서 원하는 정보만 볼 수 있다.
 
 Go To `Discover` Tab (http://localhost:5601/app/kibana#/discover)
 
@@ -888,7 +910,12 @@ Go To `Discover` Tab (http://localhost:5601/app/kibana#/discover)
 ### Step 4. Toggle
 ![kibana-discover-4](https://cloud.githubusercontent.com/assets/9030565/25625632/fb6be706-2f97-11e7-87c7-ed9f71eb9329.png)
 
-## KIBANA Visualize
+
+
+
+## KIBANA Visualize 1
+[![KIBANA Visualize 1](http://img.youtube.com/vi/QwYGzRouTsA/0.jpg)](https://youtu.be/QwYGzRouTsA)
+> 막대 차트와 파이 차트로 데이터 시각화를 실습한다.
 
 Go To `Visualize` Tab (http://localhost:5601/app/kibana#/visualize)
 
@@ -902,6 +929,7 @@ Go To `Visualize` Tab (http://localhost:5601/app/kibana#/visualize)
     - points
   - Custom Label
     - avg
+
 #### buckets
 - **X-Axis**
   - Aggregation
@@ -924,6 +952,7 @@ Go To `Visualize` Tab (http://localhost:5601/app/kibana#/visualize)
     - Sum
   - Field
     - points
+    
 #### buckets
 - **Split Slices**
   - Aggregation
@@ -938,7 +967,12 @@ Go To `Visualize` Tab (http://localhost:5601/app/kibana#/visualize)
 #### Result
 ![kibana-visualize-4](https://cloud.githubusercontent.com/assets/9030565/25626742/72bd0e9a-2f9b-11e7-9c17-34ea238477ec.jpg)
 
+
+
+
 ## KIBANA Visualize 2
+[![KIBANA Visualize 2](http://img.youtube.com/vi/jJ8BOb2IZnc/0.jpg)](https://youtu.be/jJ8BOb2IZnc)
+> Map 차트를 이용한 데이터 시각화를 실습한다.
 
 ### Create Mapping
 ```bash
@@ -978,7 +1012,11 @@ curl -XGET localhost:9200/classes/class/1?pretty
 
 ![kibana-visualize-6](https://cloud.githubusercontent.com/assets/9030565/25627596/116dd342-2f9e-11e7-8c6c-44cdc6774989.jpg)
 
+
+
+
 ## KIBANA Dashboard
+[![KIBANA Dashboard](http://img.youtube.com/vi/IIl1P7ux9o8/0.jpg)](https://youtu.be/IIl1P7ux9o8)
 
 ### Kibana Visualize
 
@@ -990,6 +1028,7 @@ curl -XGET localhost:9200/classes/class/1?pretty
     - Average
   - Field
     - points
+
 #### buckets
 - **X-Axis**
   - Aggregation
@@ -1013,21 +1052,26 @@ curl -XGET localhost:9200/classes/class/1?pretty
 
 Go To `Dashboard` Tab (http://localhost:5601/app/kibana#/dashboards)
 
-`Create a dashboard` -> `Add` -> `Select Dashboard` -> 
+`Create a dashboard` -> `Add` -> `Select Dashboard` -> `Save`
 
 ![kibana-visualize-10](https://cloud.githubusercontent.com/assets/9030565/25628552/9429126c-2fa1-11e7-82aa-288162f5ed2b.jpg)
 
+
 ---
 
-## LOGSTASH Install on ubuntu
-![elk](http://blog.arungupta.me/wp-content/uploads/2015/07/elk-stack.png)
 
+## LOGSTASH Install on ubuntu
+[![LOGSTASH](http://img.youtube.com/vi/FpEubrKOoVE/0.jpg)](https://youtu.be/FpEubrKOoVE)
+> LOGSTASH는 `ELK` 스택에서 Input에 해당한다. 
+> 다양한 형태의 데이터를 받아들여서 사용자가 지정한 형식에 맞게 필터링한 후 ELASTICSEARCH로 보낸다.
+
+
+![elk](http://blog.arungupta.me/wp-content/uploads/2015/07/elk-stack.png)
 > Logstash is an open source, server-side data processing pipeline that ingests data from a multitude of sources simultaneously, transforms it, and then sends it to your favorite “stash.”
 
 ### Install LOGSTASH
-[![logstash install](http://img.youtube.com/vi/FpEubrKOoVE/0.jpg)](http://www.youtube.com/watch?v=FpEubrKOoVE)
+**Java must required first!!**
 
-**Java must required!!**
 ```bash
 wget https://artifacts.elastic.co/downloads/logstash/logstash-5.3.1.deb
 dpkg -i logstash-5.3.1.deb
@@ -1053,9 +1097,14 @@ output {
 sudo /usr/share/logstash/bin/logstash -f ./logstash-simple.conf
 ```
 
-## Practical data analysis using ELK 1 - Population
 
-### Collcet Datas
+
+
+## Practical data analysis using ELK 1 - Population
+[![Population](http://img.youtube.com/vi/iq3t7X_9URA/0.jpg)](https://youtu.be/iq3t7X_9URA)
+> 현재까지 구성된 `ELK` 스택을 이용해서 세계 인구 분석을 실습한다.
+
+### Collect Datas
 
 #### Datas site
 https://catalog.data.gov/dataset
@@ -1064,6 +1113,8 @@ https://catalog.data.gov/dataset
 https://catalog.data.gov/dataset/population-by-country-1980-2010-d0250
 
 #### Get Ready-to-use Datas
+> Site에서 받은 데이터는 약간의 수정이 필요하다. 아래의 데이터는 바로 사용할 수 있는 데이터.
+
 ```bash
 wget https://raw.githubusercontent.com/minsuk-heo/BigData/master/ch06/populationbycountry19802010millions.csv
 ```
@@ -1085,6 +1136,7 @@ root     30036 30018  0 16:59 pts/1    00:00:00 grep --color=auto kibana
 ```bash
 root     29957 29933  0 16:57 pts/0    00:00:00 grep --color=auto kibana
 ```
+
 `Restart`
 ```bash
 sudo /usr/share/kibana/bin/kibana
@@ -1124,12 +1176,15 @@ curl -XGET 'localhost:9200'
 ```bash
 curl: (7) Failed to connect to localhost port 9200: Connection refused
 ```
+
 `Restart`
 ```bash
 sudo service elasticsearch start
 ```
 
 ### Config LOGSTASH
+> 받은 파일을 LOGSTASH를 이용해서 필터링한 후 ELASTICSEARCH에 넣어준다.
+
 ```bash
 vi logstash.conf
 ```
@@ -1186,6 +1241,7 @@ output {
     stdout {}
 }
 ```
+
 - input -> file -> path
   - Edit `Your` own file path
   - e.g.) **"/root/populationbycountry19802010millions.csv"**
@@ -1206,13 +1262,17 @@ http://localhost:5601/app/kibana#/management?_g=()
 
 ### Discover Tab
 http://localhost:5601/app/kibana#/discover?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:now-1y,mode:quick,to:now))&_a=(columns:!(_source),index:population,interval:auto,query:'',sort:!('@timestamp',desc))))
+
 ![population-analysis-2](https://cloud.githubusercontent.com/assets/9030565/25779142/0d52b078-334c-11e7-9745-01e6237e61a3.jpg)
 
 ### Visualize Tab
 
 
 
-## Practical data analysis using ELK 1 - Stock
+## Practical data analysis using ELK 2 - Stock
+[![Population](http://img.youtube.com/vi/3iA-ncqAqYE/0.jpg)](https://youtu.be/3iA-ncqAqYE)
+> 현재까지 구성된 `ELK` 스택을 이용해서 주식 분석을 실습한다.
+
 http://blog.webkid.io/visualize-datasets-with-elk/
 
 ### Collcet Datas
@@ -1224,11 +1284,23 @@ https://finance.yahoo.com
 https://finance.yahoo.com/quote/FB/history?period1=1336316400&period2=1494082800&interval=1d&filter=history&frequency=1d
 
 #### Get Ready-to-use Datas
+> Site에서 받은 데이터는 약간의 수정이 필요하다. 아래의 데이터는 바로 사용할 수 있는 데이터.
+
 ```bash
 wget https://raw.githubusercontent.com/minsuk-heo/BigData/master/ch06/table.csv
 ```
 
 ### Check ELASTICSEARCH & KIBANA are running
+
+#### Check ELASTICSEARCH
+```bash
+service elasticsearch status
+```
+
+#### Check KIBANA
+``` bash
+ps -ef | grep kibana
+```
 
 ### Config LOGSTASH
 ```bash
