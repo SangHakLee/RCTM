@@ -10,7 +10,7 @@ Git과 함께 사용할 수 있는 Git 생태계에 대해서 알아본다.
 
 ## Git
 > **Git** is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
-https://git-scm.com/
+https://git-scm.com
 
 프로그램의 소스 코드를 관리하는 **[DVCS][3]**(**D**istributed **V**ersion **C**ontrol **S**ystems)
 
@@ -38,7 +38,7 @@ ___
 
 ## Github
 > GitHub is a development platform inspired by the way you work. From open source to business, you can host and review code, manage projects, and build software alongside millions of other developers.
-https://github.com/
+https://github.com
 
 Git으로 관리되는 프로젝트를 저장하는 원격 저장소
 
@@ -61,7 +61,7 @@ Github 원격 저장소의 Push 된 변경 사항을 다른 사용자들에게 �
 #### Bitbucket
 > Code, Manage, Collaborate
 Bitbucket is the Git solution for professional teams
-https://bitbucket.org/
+https://bitbucket.org
 
 Free plan에서 `개인` 혹은 `5명 이하의 팀`은 private 저장소가 무제한 무료.
 [Atlassian][14] support.
@@ -84,7 +84,7 @@ https://about.gitlab.com
 
 ## Gist
 > Instantly share code, notes, and snippets.
-https://gist.github.com/
+https://gist.github.com
 
 짧고 간단한 코드를 저장, 버전관리, 웹에 삽입하는 서비스
 
@@ -107,27 +107,30 @@ http://hackjutsu.com/Lepton
 https://colorscripter.com
 
 ### Gist References
-- [Gist를 이용한 소스관리][20]
-- [블로그 등에 소스 코드 Snippet 붙여넣기 - GitHub Gist][21]
+- [What is GitHub?][20]
+- [Gist를 이용한 소스관리][21]
+- [블로그 등에 소스 코드 Snippet 붙여넣기 - GitHub Gist][22]
 
 ---
 
 ## Gitbook
 > Documentation made easy
 GitBook helps your team write, collaborate and publish content online.
-https://www.gitbook.com/
+https://www.gitbook.com
 
-[Markdown][22] 포맷을 이용해서 e-book을 작성하고 버전관리, 배포해주는 서비스
+[Markdown][23] 포맷을 이용해서 e-book을 작성하고 버전관리, 배포해주는 서비스
 
 ### Make REST Api Guide Page
 
 ### Make Tutorial Page
 
 #### Example
-https://sanghaklee.gitbooks.io/elk/content/
+https://sanghaklee.gitbooks.io/elk/content
+![introduction elk 2017-06-06 23-43-14](https://cloud.githubusercontent.com/assets/9030565/26834991/04b2f9b8-4b12-11e7-9655-e1c91afa8cbe.jpg)
+
 
 ### Gitbook References
-- [Gitbook 과 Pandoc 을 이용한 전자 출판][23]
+- [Gitbook 과 Pandoc 을 이용한 전자 출판][24]
 
 ---
 
@@ -135,14 +138,14 @@ https://sanghaklee.gitbooks.io/elk/content/
 ## Pages
 > Websites for you and your projects.
 Hosted directly from your GitHub repository. Just edit, push, and your changes are live.
-https://pages.github.com/
+https://pages.github.com
 
 Github 저장소를 웹 페이지로 만들어주는 서비스.
 정적 컨텐츠 블로그로 주로 이용된다.
 
 ### github.io
 Github를 계정이 있다면 `{username}.github.io` 로 접근할 수 있는 호스팅 도메인을 1개씩 사용가능하다.
-https://sanghaklee.github.io/
+https://sanghaklee.github.io
 
 Github Repo를 {username}/{username}.github.io 로 만들면 바로 이용할 수 있다.
 https://github.com/SangHakLee/sanghaklee.github.io
@@ -151,21 +154,21 @@ Pages는 PHP, JSP, ASP 같은 서버사이드 스크립트를 읽는 서버가 �
 HTML, CSS, JavaScript를 포함한 정적 컨텐츠만 이용할 수 있다.
 
 ### Static Site Generator
-https://www.staticgen.com/
-https://staticsitegenerators.net/
+https://www.staticgen.com
+https://staticsitegenerators.net
 
 ### Jekyll vs Hexo  
 정적 컨텐츠만 올릴 수 있지만, 이 과정을 쉽고 간편하게 해주는 서비스가 있다.
-Ruby 기반의 [Jekyll][24]
-Node.js 기반의 [Hexo][25] 
+Ruby 기반의 [Jekyll][25]
+Node.js 기반의 [Hexo][26] 
 
-... Go 기반의 [Hugo][26]
+... Go 기반의 [Hugo][27]
 
 ### Pages References
-- [kakao 기술 블로그가 GitHub Pages로 간 까닭은][27]
-- [Github pages와 Hexo를 이용하여 블로그 만들기][28]
-- [지킬로 깃허브에 무료 블로그 만들기][29]
-- [Hexo 시작하기][30]
+- [kakao 기술 블로그가 GitHub Pages로 간 까닭은][28]
+- [Github pages와 Hexo를 이용하여 블로그 만들기][29]
+- [지킬로 깃허브에 무료 블로그 만들기][30]
+- [Hexo 시작하기][31]
 
 ---
 
@@ -174,7 +177,7 @@ Node.js 기반의 [Hexo][25]
 Easily sync your GitHub projects with Travis CI and you’ll be testing your code in minutes!
 https://travis-ci.org/
 
-Github Repo와 연동하여 [지속적 통합][31](continuous integration)을 자동화하는 서비스
+Github Repo와 연동하여 [지속적 통합][32](continuous integration)을 자동화하는 서비스
 
 ### .travis.yml
 #### PHP
@@ -198,6 +201,7 @@ node_js:
 1. Github Services **Travis CI** 활성화 (Repo - Settings - Intergrations & services)
 1. Travis CI  가입 (Github 계정 연동)
 1. Travis CI 사용할 Github Repo 추가
+1. Github Repo에 프로젝트에 맞는 `.travis.yml` 파일 추가
 
 #### Step 1
 Travis CI 를 사용할 Repo만 선택한 상태.
@@ -214,8 +218,15 @@ Github Repo README.md 에 Travis CI 에서 제공하는 build status 아이콘�
 ![sanghaklee php-js-function pollyfill php function for javascript 2017-06-06 23-26-26](https://cloud.githubusercontent.com/assets/9030565/26834201/a5066cae-4b0f-11e7-8409-3907e8314485.jpg)
 
 ### Travis CI References
-- [Travis CI 소개 #1][32]
-- http://judelee19.github.io/etc/travis_CI/
+- [Travis CI 소개 #1][33]
+- [Travis CI 의 연동과 사용][34]
+
+---
+
+### Conclusion
+Git은 코드를 관리하기 위한 DVCS이다. Git을 이런 용도로만 제대로 사용해도 성공이지만, Git 과 함께 사용할 수 있는 서비스는 소개한 서비스 말고도 굉장히 많다.
+Git 보다는  Github과 함께 사용할 수 있는 서비스라고 명하는 것이 더 정확할 수 있으나, Github의 root는 Git이니 Git 생태계라 정했다.
+안 쓸 이유가 없는 서비스들이니 한 번쯤 사용해보는 것을 적극 추천한다. 
 
 
   [1]: https://subversion.apache.org/
@@ -237,16 +248,18 @@ Github Repo README.md 에 Travis CI 에서 제공하는 build status 아이콘�
   [17]: https://blog.outsider.ne.kr/865
   [18]: http://kr.discovermeteor.com/chapters/github/
   [19]: https://medium.com/flow-ci/github-vs-bitbucket-vs-gitlab-vs-coding-7cf2b43888a1
-  [20]: https://gist.github.com/safe1981/2041116
-  [21]: http://hanmomhanda.tistory.com/entry/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%93%B1%EC%97%90-%EC%86%8C%EC%8A%A4-%EC%BD%94%EB%93%9C-Snippet-%EB%B6%99%EC%97%AC%EB%84%A3%EA%B8%B0-GitHub-Gist
-  [22]: https://ko.wikipedia.org/wiki/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4
-  [23]: http://blog.appkr.kr/work-n-play/pandoc-gitbook-%EC%A0%84%EC%9E%90%EC%B6%9C%ED%8C%90/
-  [24]: https://jekyllrb-ko.github.io/
-  [25]: https://hexo.io/ko/
-  [26]: https://gohugo.io/
-  [27]: http://tech.kakao.com/2016/07/07/tech-blog-story/
-  [28]: http://blog.lattecom.xyz/2016/06/28/hexo-blog-github-pages/
-  [29]: https://nolboo.kim/blog/2013/10/15/free-blog-with-github-jekyll/
-  [30]: https://hyunseob.github.io/2016/02/23/start-hexo/
-  [31]: https://ko.wikipedia.org/wiki/%EC%A7%80%EC%86%8D%EC%A0%81_%ED%86%B5%ED%95%A9
-  [32]: https://blog.outsider.ne.kr/779
+  [20]: https://guides.github.com/activities/hello-world/
+  [21]: https://gist.github.com/safe1981/2041116
+  [22]: http://hanmomhanda.tistory.com/entry/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%93%B1%EC%97%90-%EC%86%8C%EC%8A%A4-%EC%BD%94%EB%93%9C-Snippet-%EB%B6%99%EC%97%AC%EB%84%A3%EA%B8%B0-GitHub-Gist
+  [23]: https://ko.wikipedia.org/wiki/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4
+  [24]: http://blog.appkr.kr/work-n-play/pandoc-gitbook-%EC%A0%84%EC%9E%90%EC%B6%9C%ED%8C%90/
+  [25]: https://jekyllrb-ko.github.io/
+  [26]: https://hexo.io/ko/
+  [27]: https://gohugo.io/
+  [28]: http://tech.kakao.com/2016/07/07/tech-blog-story/
+  [29]: http://blog.lattecom.xyz/2016/06/28/hexo-blog-github-pages/
+  [30]: https://nolboo.kim/blog/2013/10/15/free-blog-with-github-jekyll/
+  [31]: https://hyunseob.github.io/2016/02/23/start-hexo/
+  [32]: https://ko.wikipedia.org/wiki/%EC%A7%80%EC%86%8D%EC%A0%81_%ED%86%B5%ED%95%A9
+  [33]: https://blog.outsider.ne.kr/779
+  [34]: http://judelee19.github.io/etc/travis_CI/
