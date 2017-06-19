@@ -1,10 +1,7 @@
 # [Git] Git ecosystem with. Github Gist Gitbook Pages Travis
 
-@(Marxico)
-
-
 ### Introduction
-개발자들은, 자신의 프로그램 소스 코드를 효율적으로 관리하기 위해 버전 관리 툴을 이용한다.
+개발자들은, 자신의 프로그램 소스 코드를 효율적으로 관리하기 위해 **버전 관리 툴**을 이용한다.
 과거에는 [SVN][1]을 많이 사용했지만, 최근엔 [Git][2]을 대부분 선택한다.
 Git과 함께 사용할 수 있는 Git 생태계에 대해서 알아본다.
 
@@ -18,6 +15,9 @@ https://git-scm.com
 ![Version Control | 300x0][4]
 > 버전 관리 시스템은 파일의 변화를 시간에 따라 기록하여 과거 특정 시점의 버전을 다시 불러올 수 있는 시스템이다. 
 [로컬, 중앙 집중, 분산 버전 관리][5]
+
+>  **NOTE:  ** 필자의 주관적인 비유론,  버전 관리는 2가지 초능력을 가진 사람이다. 
+ 첫 번째는 분신술, 두 번째는 타임머신 능력. 분신술을 이용해서 자신을 계속해서 복제한다. 각기 복제된 사람은 각자의 인생을 살아간다. 어떤 복제 인간은 공부만 하고 어떤 복제 인간은 운동만 한다. 공부한 내용이 마음에 들지 않으면 타임머신 기능을 이용해 과거로 돌아가서 다시 배운다. 이렇게 각자의 인생을 살아가는 복제 인간은 어느 시점에서 최초의 복제되기 전의 사람으로 합쳐지고 여태 학습한 지식, 능력 등이 합쳐진다. **굉장하다!**
 
 ### SVN vs Git
 > SVN : 파일을 관리하는 중앙 서버가 존재하고, 각 클라이언트들은 중앙 서버에서 파일을 Checkout 받아 사용한다. 즉, 중앙 서버에 의존적인 파일 관리 체계이다.
@@ -41,6 +41,7 @@ ___
 https://github.com
 
 Git으로 관리되는 프로젝트를 저장하는 원격 저장소
+위의 [SVN vs Git](#svn-vs-git) 그림에서 **Git**의 **REMOTE REPOSITORY**
 
 ### Make Public Repository
 ![create a new repository 2017-06-06 22-08-56](https://cloud.githubusercontent.com/assets/9030565/26830847/29ce02a4-4b05-11e7-9745-05e75af518d4.jpg)
@@ -50,12 +51,38 @@ Git으로 관리되는 프로젝트를 저장하는 원격 저장소
 - **Add a license** : 해당 프로젝트의 라이센스 정보를 명시하는 파일
 
 ![sanghaklee php-js-function pollyfill php function for javascript 2017-06-06 22-11-05](https://cloud.githubusercontent.com/assets/9030565/26830859/3fe2cd2c-4b05-11e7-82b1-861051373f63.jpg)
-
+: 다음과 같이 Github에 공개된 저장소가 만들어진다.
 
 ### Try Pull Request
 > Pull requests let you tell others about changes you've pushed to a repository on GitHub.
 
-Github 원격 저장소의 Push 된 변경 사항을 다른 사용자들에게 알려서 코드 수정 사항에 대해 같이 토론하는 과정 
+Github 원격 저장소의 Push된 변경 사항을 다른 사용자들에게 알려서 코드 수정 사항에 대해 같이 토론하는 과정 
+
+#### 1. fork repo
+![1 fork repo clone](https://user-images.githubusercontent.com/9030565/27293132-7b80a6c4-5550-11e7-91a5-69b38f9accb2.png)
+
+#### 2. coding!
+![2 coding](https://user-images.githubusercontent.com/9030565/27293196-a537c31c-5550-11e7-82b2-688e42894bb0.png)
+
+#### 3. commit
+![3 commit](https://user-images.githubusercontent.com/9030565/27293241-c9d9db9c-5550-11e7-9a93-f5fbc387ff57.jpeg)
+
+#### 4. push
+![4 push](https://user-images.githubusercontent.com/9030565/27293277-e2726dd6-5550-11e7-9e03-ae6026ac7722.png)
+
+#### 5. Travis CI build check
+![5 travisci](https://user-images.githubusercontent.com/9030565/27293306-f5dde1e8-5550-11e7-943a-91978e8621ae.png)
+
+#### 6. Pull Request
+![7 1](https://user-images.githubusercontent.com/9030565/27293343-145c79f4-5551-11e7-8681-6ef392693a19.jpg)
+- **작업한 fork repo의 branch를 확인한 후 Pull Request 메세지를 적는다.**
+ 
+![7 2](https://user-images.githubusercontent.com/9030565/27293342-1445aa30-5551-11e7-99c4-ec6aa2946b01.jpg)
+- **변경되는 file과 코드를 다시 한 번 확인한다.**
+
+![7 3](https://user-images.githubusercontent.com/9030565/27293341-14444212-5551-11e7-9614-a27f8c098cf6.jpg)
+- **전송 버튼을 클릭하면 새로운 Pull Resquest가 생기고 PR 번호를 받는다.** 
+- **앞으로 추가 수정되는 사항과 PR의 승인, 거부 진행이 여기서 진행된다.**
 
 ### More
 #### Bitbucket
@@ -78,7 +105,10 @@ https://about.gitlab.com
 ### Github References
 - [Github를 이용하는 전체 흐름 이해하기 #1][17]
 - [Git과 GitHub 사용하기][18]
-- [GitHub vs. Bitbucket vs. GitLab vs. Coding][19]
+- [[깃허브(Github)] 2. Github아이디 생성, Github 테스트][19]
+- [GitHub vs. Bitbucket vs. GitLab vs. Coding][20]
+- [Bitbucket에서 무료 비공개 git repository 만들기][21]
+- [나만의 GIT 서버를 구축하고 프로젝트에 적용하는 방법 (gitlab ssl)][22]
 
 ---
 
@@ -89,10 +119,17 @@ https://gist.github.com
 짧고 간단한 코드를 저장, 버전관리, 웹에 삽입하는 서비스
 
 ### Embed Your Gist Code
+
+#### Script
 ```javascript
 <script src="https://gist.github.com/SangHakLee/f3bdee00e6bcbb1965c235840eb43034.js"></script>
 ```
+
+#### Result
+![gist-embed](https://user-images.githubusercontent.com/9030565/27279944-33ba09a4-5521-11e7-8dbe-42960cd741e5.PNG)
+
 <script src="https://gist.github.com/SangHakLee/f3bdee00e6bcbb1965c235840eb43034.js"></script>
+http://sanghaklee.tistory.com/3
 
 ### More
 #### Lepton
@@ -107,9 +144,10 @@ http://hackjutsu.com/Lepton
 https://colorscripter.com
 
 ### Gist References
-- [What is GitHub?][20]
-- [Gist를 이용한 소스관리][21]
-- [블로그 등에 소스 코드 Snippet 붙여넣기 - GitHub Gist][22]
+- [Gist를 이용한 소스관리][23]
+- [[Sublime Text 3] 서브라임에서 Gist 연동하기][24]
+- [블로그 등에 소스 코드 Snippet 붙여넣기 - GitHub Gist][25]
+- [블로그 소스 코드를 보기좋게 Color Scripter 사용법][26]
 
 ---
 
@@ -118,19 +156,20 @@ https://colorscripter.com
 GitBook helps your team write, collaborate and publish content online.
 https://www.gitbook.com
 
-[Markdown][23] 포맷을 이용해서 e-book을 작성하고 버전관리, 배포해주는 서비스
+[Markdown][27] 포맷을 이용해서 e-book을 작성하고 버전관리, 배포해주는 서비스
 
 ### Make REST Api Guide Page
+https://developer.gitbook.com
+![overview gitbook developers 2017-06-20 00-29-36](https://user-images.githubusercontent.com/9030565/27293038-39b028f0-5550-11e7-9b18-8030574be1d5.jpg)
 
 ### Make Tutorial Page
-
-#### Example
 https://sanghaklee.gitbooks.io/elk/content
 ![introduction elk 2017-06-06 23-43-14](https://cloud.githubusercontent.com/assets/9030565/26834991/04b2f9b8-4b12-11e7-9655-e1c91afa8cbe.jpg)
 
 
 ### Gitbook References
-- [Gitbook 과 Pandoc 을 이용한 전자 출판][24]
+- [Gitbook 과 Pandoc 을 이용한 전자 출판][28]
+- [GitBook 서비스 사용해보기][29]
 
 ---
 
@@ -144,7 +183,7 @@ Github 저장소를 웹 페이지로 만들어주는 서비스.
 정적 컨텐츠 블로그로 주로 이용된다.
 
 ### github.io
-Github를 계정이 있다면 `{username}.github.io` 로 접근할 수 있는 호스팅 도메인을 1개씩 사용가능하다.
+Github 계정이 있다면 `{username}.github.io` 로 접근할 수 있는 호스팅 도메인을 1개씩 사용할 수 있다.
 https://sanghaklee.github.io
 
 Github Repo를 {username}/{username}.github.io 로 만들면 바로 이용할 수 있다.
@@ -154,30 +193,37 @@ Pages는 PHP, JSP, ASP 같은 서버사이드 스크립트를 읽는 서버가 �
 HTML, CSS, JavaScript를 포함한 정적 컨텐츠만 이용할 수 있다.
 
 ### Static Site Generator
+![Static Site Generator][30]
+> 정적 페이지를 자동으로 만들어주는 프레임워크
+**Static Site Generator**로 생성되는 페이지는 정적이기 때문에 최종으로 생성된 HTML만 올리면 Server-side 언어의 도움을 받을 필요가 없다.
+즉, AWS S3와 같이 저장소와 접근 가능한 URL만 존재하면 생성된 HTML을 배포할 수 있다.
+
 https://www.staticgen.com
 https://staticsitegenerators.net
 
 ### Jekyll vs Hexo  
 정적 컨텐츠만 올릴 수 있지만, 이 과정을 쉽고 간편하게 해주는 서비스가 있다.
-Ruby 기반의 [Jekyll][25]
-Node.js 기반의 [Hexo][26] 
 
-... Go 기반의 [Hugo][27]
+Ruby 기반의 [Jekyll][31] (Repo star rank 1)
+Node.js 기반의 [Hexo][32] (Repo star rank 3)
+
+... Go 기반의 [Hugo][33] (Repo star rank 2)
 
 ### Pages References
-- [kakao 기술 블로그가 GitHub Pages로 간 까닭은][28]
-- [Github pages와 Hexo를 이용하여 블로그 만들기][29]
-- [지킬로 깃허브에 무료 블로그 만들기][30]
-- [Hexo 시작하기][31]
+- [kakao 기술 블로그가 GitHub Pages로 간 까닭은][34]
+- [Github pages와 Hexo를 이용하여 블로그 만들기][35]
+- [지킬로 깃허브에 무료 블로그 만들기][36]
+- [Hexo 시작하기][37]
+- [Static Site Generator][38]
 
 ---
 
 ## Travis CI
 > Test and Deploy with Confidence
 Easily sync your GitHub projects with Travis CI and you’ll be testing your code in minutes!
-https://travis-ci.org/
+https://travis-ci.org
 
-Github Repo와 연동하여 [지속적 통합][32](continuous integration)을 자동화하는 서비스
+Github Repo와 연동하여 [지속적 통합][39](continuous integration)을 자동화하는 서비스
 
 ### .travis.yml
 #### PHP
@@ -209,24 +255,27 @@ Travis CI 를 사용할 Repo만 선택한 상태.
 ![travis ci 1 2017-06-06 23-01-51](https://cloud.githubusercontent.com/assets/9030565/26833672/17579b22-4b0e-11e7-9559-db7d63e7f748.jpg)
 
 #### Step 2
-Github에 Push 요청이 오고 이를 감지한 Travis CI 가 해당 프로젝트를 빌드한 상태
+Github에 Push 요청이 오고 이를 감지한 Travis CI가 해당 프로젝트를 빌드한 상태
 ![travis ci 2 2017-06-06 23-12-01](https://cloud.githubusercontent.com/assets/9030565/26833754/52d3a4ca-4b0e-11e7-9b70-38420e34a2ca.jpg)
 ![travis ci 3 2017-06-06 23-12-20](https://cloud.githubusercontent.com/assets/9030565/26833813/71f1a956-4b0e-11e7-9f8d-26922c3565c4.jpg)
 
 #### Step 3
-Github Repo README.md 에 Travis CI 에서 제공하는 build status 아이콘을 넣을 수 있다.
+Github Repo README.md 에 Travis CI에서 제공하는 build status 아이콘을 넣을 수 있다.
 ![sanghaklee php-js-function pollyfill php function for javascript 2017-06-06 23-26-26](https://cloud.githubusercontent.com/assets/9030565/26834201/a5066cae-4b0f-11e7-8409-3907e8314485.jpg)
 
 ### Travis CI References
-- [Travis CI 소개 #1][33]
-- [Travis CI 의 연동과 사용][34]
+- [Travis CI 소개 #1][40]
+- [Travis CI 의 연동과 사용][41]
+- [Travis-CI 시작하기][42]
+- [Django 프로젝트와 Travis CI 연동 + selenium][43]
+- [Github에서 코드 커버리지를 보여주는 Coveralls][44]
 
 ---
 
 ### Conclusion
 Git은 코드를 관리하기 위한 DVCS이다. Git을 이런 용도로만 제대로 사용해도 성공이지만, Git 과 함께 사용할 수 있는 서비스는 소개한 서비스 말고도 굉장히 많다.
 Git 보다는  Github과 함께 사용할 수 있는 서비스라고 명하는 것이 더 정확할 수 있으나, Github의 root는 Git이니 Git 생태계라 정했다.
-안 쓸 이유가 없는 서비스들이니 한 번쯤 사용해보는 것을 적극 추천한다. 
+**안 쓸 이유가 없는** 서비스들이니 한 번쯤 사용해보는 것을 적극 추천한다. 
 
 
   [1]: https://subversion.apache.org/
@@ -247,19 +296,29 @@ Git 보다는  Github과 함께 사용할 수 있는 서비스라고 명하는 �
   [16]: https://kyupokaws.wordpress.com/2017/02/02/2117-gitlab-com-database-incident%ED%95%9C%EA%B8%80%EB%B2%88%EC%97%AD/
   [17]: https://blog.outsider.ne.kr/865
   [18]: http://kr.discovermeteor.com/chapters/github/
-  [19]: https://medium.com/flow-ci/github-vs-bitbucket-vs-gitlab-vs-coding-7cf2b43888a1
-  [20]: https://guides.github.com/activities/hello-world/
-  [21]: https://gist.github.com/safe1981/2041116
-  [22]: http://hanmomhanda.tistory.com/entry/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%93%B1%EC%97%90-%EC%86%8C%EC%8A%A4-%EC%BD%94%EB%93%9C-Snippet-%EB%B6%99%EC%97%AC%EB%84%A3%EA%B8%B0-GitHub-Gist
-  [23]: https://ko.wikipedia.org/wiki/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4
-  [24]: http://blog.appkr.kr/work-n-play/pandoc-gitbook-%EC%A0%84%EC%9E%90%EC%B6%9C%ED%8C%90/
-  [25]: https://jekyllrb-ko.github.io/
-  [26]: https://hexo.io/ko/
-  [27]: https://gohugo.io/
-  [28]: http://tech.kakao.com/2016/07/07/tech-blog-story/
-  [29]: http://blog.lattecom.xyz/2016/06/28/hexo-blog-github-pages/
-  [30]: https://nolboo.kim/blog/2013/10/15/free-blog-with-github-jekyll/
-  [31]: https://hyunseob.github.io/2016/02/23/start-hexo/
-  [32]: https://ko.wikipedia.org/wiki/%EC%A7%80%EC%86%8D%EC%A0%81_%ED%86%B5%ED%95%A9
-  [33]: https://blog.outsider.ne.kr/779
-  [34]: http://judelee19.github.io/etc/travis_CI/
+  [19]: http://recoveryman.tistory.com/251
+  [20]: https://medium.com/flow-ci/github-vs-bitbucket-vs-gitlab-vs-coding-7cf2b43888a1
+  [21]: http://www.ihee.com/154
+  [22]: https://blog.lael.be/post/5476
+  [23]: https://gist.github.com/safe1981/2041116
+  [24]: http://sanghaklee.tistory.com/27
+  [25]: http://hanmomhanda.tistory.com/entry/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%93%B1%EC%97%90-%EC%86%8C%EC%8A%A4-%EC%BD%94%EB%93%9C-Snippet-%EB%B6%99%EC%97%AC%EB%84%A3%EA%B8%B0-GitHub-Gist
+  [26]: http://kanu.tistory.com/14
+  [27]: https://ko.wikipedia.org/wiki/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4
+  [28]: http://blog.appkr.kr/work-n-play/pandoc-gitbook-%EC%A0%84%EC%9E%90%EC%B6%9C%ED%8C%90/
+  [29]: http://surpassing.tistory.com/695
+  [30]: https://cdn.keycdn.com/support/wp-content/uploads/2015/12/static-site-generator.png
+  [31]: https://jekyllrb-ko.github.io/
+  [32]: https://hexo.io/ko/
+  [33]: https://gohugo.io/
+  [34]: http://tech.kakao.com/2016/07/07/tech-blog-story/
+  [35]: http://blog.lattecom.xyz/2016/06/28/hexo-blog-github-pages/
+  [36]: https://nolboo.kim/blog/2013/10/15/free-blog-with-github-jekyll/
+  [37]: https://hyunseob.github.io/2016/02/23/start-hexo/
+  [38]: https://www.keycdn.com/support/static-site-generator/
+  [39]: https://ko.wikipedia.org/wiki/%EC%A7%80%EC%86%8D%EC%A0%81_%ED%86%B5%ED%95%A9
+  [40]: https://blog.outsider.ne.kr/779
+  [41]: http://judelee19.github.io/etc/travis_CI/
+  [42]: http://nnoco.tistory.com/227
+  [43]: http://jellyms.kr/804
+  [44]: https://blog.outsider.ne.kr/954
