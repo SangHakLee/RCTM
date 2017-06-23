@@ -1,9 +1,15 @@
 # [Git] Git ecosystem with. Github Gist Gitbook Pages Travis
 
+@(Marxico)
+
+
+
+![ecosystem](https://user-images.githubusercontent.com/9030565/27318941-dacb2eaa-55c9-11e7-89c5-75979ef5f5a6.png)
+
 ### Introduction
-개발자들은, 자신의 프로그램 소스 코드를 효율적으로 관리하기 위해 **버전 관리 툴**을 이용한다.
+개발자들은 자신의 프로그램 소스 코드를 효율적으로 관리하기 위해 **버전 관리 툴**을 이용한다.
 과거에는 [SVN][1]을 많이 사용했지만, 최근엔 [Git][2]을 대부분 선택한다.
-Git과 함께 사용할 수 있는 Git 생태계에 대해서 알아본다.
+Git과 함께 사용할 수 있는 **Git 생태계**에 대해서 알아본다.
 
 ## Git
 > **Git** is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
@@ -51,38 +57,59 @@ Git으로 관리되는 프로젝트를 저장하는 원격 저장소
 - **Add a license** : 해당 프로젝트의 라이센스 정보를 명시하는 파일
 
 ![sanghaklee php-js-function pollyfill php function for javascript 2017-06-06 22-11-05](https://cloud.githubusercontent.com/assets/9030565/26830859/3fe2cd2c-4b05-11e7-82b1-861051373f63.jpg)
-: 다음과 같이 Github에 공개된 저장소가 만들어진다.
+다음과 같이 Github에 공개된 저장소가 만들어진다.
 
 ### Try Pull Request
 > Pull requests let you tell others about changes you've pushed to a repository on GitHub.
 
-Github 원격 저장소의 Push된 변경 사항을 다른 사용자들에게 알려서 코드 수정 사항에 대해 같이 토론하는 과정 
+Github 원격 저장소의 Push된 변경 사항을 다른 사용자들에게 알려 코드 수정 사항에 대해 같이 토론하는 과정
+오픈소스 프로젝트에 자신이 만든 코드를 추가해 달다고 요청하거나 오류의 수정을 요청할 수 있다.
 
 #### 1. fork repo
+변경하고자 하는 프로젝트를 복사하여 자신의 Github 계정으로 가져온다.
 ![1 fork repo clone](https://user-images.githubusercontent.com/9030565/27293132-7b80a6c4-5550-11e7-91a5-69b38f9accb2.png)
 
 #### 2. coding!
+수정 사항을 코딩한다.
 ![2 coding](https://user-images.githubusercontent.com/9030565/27293196-a537c31c-5550-11e7-82b2-688e42894bb0.png)
 
 #### 3. commit
+자신의 `fork repo`에 **commit** 한다.(로컬에 변경 사항 저장)
 ![3 commit](https://user-images.githubusercontent.com/9030565/27293241-c9d9db9c-5550-11e7-9a93-f5fbc387ff57.jpeg)
 
 #### 4. push
+자신의 `fork repo`에 **push** 한다.(원격 저장소에 변경 사항 저장)
 ![4 push](https://user-images.githubusercontent.com/9030565/27293277-e2726dd6-5550-11e7-9e03-ae6026ac7722.png)
 
 #### 5. Travis CI build check
+**Optional** - 필자는 해당 프로젝트 Push 시 Travis CI가 자동 빌드한다. Travis CI에 대한 설명은 다시 나온다.
 ![5 travisci](https://user-images.githubusercontent.com/9030565/27293306-f5dde1e8-5550-11e7-943a-91978e8621ae.png)
 
 #### 6. Pull Request
+수정된 코드를 `fork` 받은 프로젝트로 병합하기 위해 요청을 보낸다.
 ![7 1](https://user-images.githubusercontent.com/9030565/27293343-145c79f4-5551-11e7-8681-6ef392693a19.jpg)
 - **작업한 fork repo의 branch를 확인한 후 Pull Request 메세지를 적는다.**
  
 ![7 2](https://user-images.githubusercontent.com/9030565/27293342-1445aa30-5551-11e7-99c4-ec6aa2946b01.jpg)
-- **변경되는 file과 코드를 다시 한 번 확인한다.**
+- **변경되는 file과 code를 다시 한 번 확인한다.**
 
 ![7 3](https://user-images.githubusercontent.com/9030565/27293341-14444212-5551-11e7-9614-a27f8c098cf6.jpg)
 - **전송 버튼을 클릭하면 새로운 Pull Resquest가 생기고 PR 번호를 받는다.** 
 - **앞으로 추가 수정되는 사항과 PR의 승인, 거부 진행이 여기서 진행된다.**
+
+![8 pr](https://user-images.githubusercontent.com/9030565/27465773-91037fd6-5810-11e7-85cf-da90a8194ead.jpg)
+- **PR 승인 전,  [validator.js](https://github.com/chriso/validator.js) README.md**
+- **아직 `ko-KR` isMobilePhone이 없는 상태**
+
+#### 7. Pull Request Accepted
+![9 pr 1](https://user-images.githubusercontent.com/9030565/27465865-2cb6b2e0-5811-11e7-9e98-0d4649d7cce1.jpg)
+- **https://github.com/chriso/validator.js/pull/668**
+- **PR이 승인됐다고 오픈소스 Author에게 PR 메세지가 온 상태**
+
+![9 pr 2](https://user-images.githubusercontent.com/9030565/27465913-977c87ee-5811-11e7-8bb3-014df6ffa8bf.jpg)
+- **PR 승인 후,  [validator.js](https://github.com/chriso/validator.js) README.md**
+- *`ko-KR` isMobilePhone이 추가된 상태**
+
 
 ### More
 #### Bitbucket
@@ -99,8 +126,7 @@ GitLab unifies issues, code review, CI and CD into a single UI
 https://about.gitlab.com
 
 설치형 Git 저장소
-
-`Gitlab 장애` [GitLab.com Database Incident][15] ([한글][16])
+**Gitlab 장애** [GitLab.com Database Incident][15] ([한글][16])
 
 ### Github References
 - [Github를 이용하는 전체 흐름 이해하기 #1][17]
@@ -143,6 +169,9 @@ http://hackjutsu.com/Lepton
 > `<script>` 태그 없이  코드 Syntax HighLighting 해주는 서비스
 https://colorscripter.com
 
+![gist-colorscripter](https://user-images.githubusercontent.com/9030565/27318457-62275d0e-55c7-11e7-9564-88cea9d29416.PNG)
+
+
 ### Gist References
 - [Gist를 이용한 소스관리][23]
 - [[Sublime Text 3] 서브라임에서 Gist 연동하기][24]
@@ -156,7 +185,7 @@ https://colorscripter.com
 GitBook helps your team write, collaborate and publish content online.
 https://www.gitbook.com
 
-[Markdown][27] 포맷을 이용해서 e-book을 작성하고 버전관리, 배포해주는 서비스
+[Markdown][27] 포맷을 이용해서 e-book을 작성하고 버전 관리, 배포해주는 서비스
 
 ### Make REST Api Guide Page
 https://developer.gitbook.com
@@ -202,7 +231,7 @@ https://www.staticgen.com
 https://staticsitegenerators.net
 
 ### Jekyll vs Hexo  
-정적 컨텐츠만 올릴 수 있지만, 이 과정을 쉽고 간편하게 해주는 서비스가 있다.
+이 과정을 쉽고 간편하게 해주는 서비스가 있다.
 
 Ruby 기반의 [Jekyll][31] (Repo star rank 1)
 Node.js 기반의 [Hexo][32] (Repo star rank 3)
