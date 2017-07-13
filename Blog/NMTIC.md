@@ -6,7 +6,7 @@
 원본의 내용과 조금 다를 수 있고 필자의 정보가 추가됐습니다.
 또한, 단계별 과정에 캡쳐를 추가하고  코드를 [Github](https://github.com/SangHakLee/NMTIC) 저장소에 올려 두었습니다. 
 
-> This article is a translation of [Korean + Moccas + Travis + Istanbul + Coveralls: Unit tests & coverage for your open source project](http://dsernst.com/2015/09/02/node-mocha-travis-istanbul-coveralls-unit-tests-coverage-for-your-open-source-project/).
+> This article is a translation of [Node + Mocha + Travis + Istanbul + Coveralls: Unit tests & coverage for your open source project](http://dsernst.com/2015/09/02/node-mocha-travis-istanbul-coveralls-unit-tests-coverage-for-your-open-source-project/).
 Before publishing the blog, I asked for the [authors](https://github.com/dsernst)' consent and translated and blogged.
 The contents of the original may be slightly different, and my information has been added.
 I also added capture to the step-by-step process and put the code in the [Github](https://github.com/SangHakLee/NMTIC) repository.
@@ -48,7 +48,7 @@ $ npm install -g mocha
 
 아래의 명령어를 사용해서 기본 `test` 경로의 테스트 코드를 실행한다.
 ```bash
-$ npm mocha
+$ mocha
 ```
 ![02-01](https://user-images.githubusercontent.com/9030565/28170585-d13ea394-6820-11e7-9120-6b6b0119ffb8.PNG)
 
@@ -212,7 +212,7 @@ https://github.com/SangHakLee/NMTIC/tree/07-Adding-automatic-coverage-testing-wi
 
 
 이제 Travis-CI에서 빌드가 성공할 때마다, 업데이트된 코드 커버리지가 Coveralls로 보내진다.
-`$ npm run coveralls` 명령어를 사용해서 Coveralls을 갱신할 수 있다. 물론,  [.coveralls.yml](https://github.com/nickmerwin/node-coveralls#running-locally) 파일이 해당 저장소에 있어야 한다. 이 떄는 `.gitignore`에 `.coveralls.yml`을 추가해야 안전하게 이용할 수 있다. (**Key 정보가 들어가기 때문에**)
+`$ npm run coveralls` 명령어를 사용해서 Coveralls을 갱신할 수 있다. 물론,   [.coveralls.yml](https://github.com/nickmerwin/node-coveralls#running-locally) 파일이 해당 저장소에 있어야 한다. 이 떄는 `.gitignore`에 `.coveralls.yml`을 추가해야 안전하게 이용할 수 있다. (**Key 정보가 들어가기 때문에**)
 
 ## Success
 https://github.com/SangHakLee/NMTIC/tree/08-Success
