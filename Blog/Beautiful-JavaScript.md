@@ -1,7 +1,15 @@
 # [ECMAScript6 / ES6] 아름다운 JavaScript를 위한 ES6 
-
+![es6](https://www.frameworktraining.co.uk/images/2017/03/ecmascript-6-es6-framework-training-logo.PNG)
 ### Introduction
-그럼에도 불구하고, ES6를 써야하는 이유?
+**ECMAScript5**는 2009.12에 나왔다.
+지금은 2017년이고 **ECMAScript8**이 가장 최신 버전이다.
+그럼에도, 아직 많은 JavaScript 문법은 ES5로 코딩되어지고 있다.
+ES6 이상으로 넘어가기 위한 몇 가지 걸림돌이 있다.
+- cross browsing
+- transpiler
+
+**그럼에도 불구하고, ES6를 써야 하는 이유?**
+많은 이유가 있겠지만, 개인적으론...
 
 ![enter image description here](http://cfile235.uf.daum.net/R400x0/237ACD3D5666ACF13155EA)
 "아름답지 않으면 살 의미가 없어" - 하울의 움직이는 성
@@ -10,7 +18,7 @@
 **아름다운 코드에 대한 열망**
 
 > Node.js를 통해 JavaScript를 배웠지만, JavaScript의 복잡한 Callback 구조는 코드를 보기 힘들게 했다.
-> 다른 스크립트 언어에서 제공하는 깔끔한 문법이 있으면 좋다고 생각했는데, ES6가 이런 요구사항을 만족 시켜줄거라 생각해서 새로운 Node.js 프로젝트에 ES6를 도입했다. (당시 Node.js v6.10.x 의 ES6 coverage가 99%였기 때문에 사용가능했다.)
+> 다른 스크립트 언어에서 제공하는 깔끔한 문법이 있으면 좋다고 생각했는데, ES6가 이런 요구사항을 만족시켜줄 거라 생각해서 새로운 Node.js 프로젝트에 ES6를 도입했다. (당시 Node.js v6.10.x 의 ES6 coverage가 99%였기 때문에 사용 가능했다.)
 
 ## Background
 ES5, ES6의 대한 설명을 바로 하는 것보다 JavaScript의 동작 원리를 알고 ES5, ES6를 알면 좋을 것 같다.
@@ -31,40 +39,52 @@ ES5, ES6의 대한 설명을 바로 하는 것보다 JavaScript의 동작 원리
 JIT 컴파일(just-in-time compilation) 또는 동적 번역(dynamic translation)은 프로그램을 실제 실행하는 시점에 기계어로 번역하는 컴파일 기법이다. 
 실행 시점에서 기계어 코드를 생성하면서 그 코드를 캐싱하여, 같은 함수가 여러 번 불릴 때 매번 기계어 코드를 생성하는 것을 방지한다.
 
+#### Engine vs Runtime
+- **Engine**: JavaScript로 작성된 스크립트를 기계 실행 가능하게 변경. 구문 분석 및 JIT 컴파일
+- **Runtime** : 실행 중 프로그램에서 사용할 수있는 기본 라이브러리를 제공
+> Chrome and Node.js therefore share the same engine (Google’s V8), but they have different runtime (execution) environments.
+
+
+#### Overall
 > 우리가 JavaScript 코드를 웹에 올리면 브라우저의 엔진(e.g. V8)이 코드를 해석하고 실행한다. 
 > 각 엔진마다 JavaScript 코드를 해석하는 방법과 능력 등이 다르다.
-> 그래서 ES6, ES7이 발표되도 IE 같은 좋은 브라우저에선 바로 사용할 수 없는 것이다.
+> 그래서 ES6, ES7이 발표돼도 IE 같은 좋은 브라우저에선 바로 사용할 수 없는 것이다.
 > ES6에 새로 추가된 문법을 해석할 능력이 없는 엔진인 것이다.
-> Python 2.x 와 3.x의 문법이 조금씩 다른 것과 비슷하다.
+> 따라서, Cross-Browsing 문제를 해결하기 위해 [Babel](https://babeljs.io/)과 같은 transpiler를 이용해서 ES6를 작성된 코드를 ES5로 변환시킨 후 사용한다.
+
+<br>
 
 ## Beautiful Code
 > 아래의 ES6부터 추가된 문법은 JavaScript 코딩 중 가장 많이 사용하는 문법이다.
 > 또한, 이러한 sugar-code 스러운 느낌이 마음에 들어 ES6를 도입했다.
 
-## Destructuring Assignment
+**Short, Simple, Small and Stupid**
+
+<br>
+
+### Destructuring Assignment
 비구조화 할당
 https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
 
-### ES5
+#### ES5
 ```javascript
 var name = req.body.name
 var age = req.body.age
 var email = req.body.email
 ```
 
-### ES6
+#### ES6
 ```javascript
 const {name, age, email} = req.body
 ```
 
----
 <br>
 
-##Object Initialize - Property Shorthand
+### Object Initialize - Property Shorthand
 객체 초기자
 https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Object_initializer
 
-### ES5
+#### ES5
 ```javascript
 var name = 'hak'
 var age = 27
@@ -77,7 +97,7 @@ var datas = {
 }
 ```
 
-### ES6
+#### ES6
 ```javascript
 let name = 'hak'
 let age = 27
@@ -87,14 +107,13 @@ let datas = {name, age, email}
 let datas2 = {username: name, age, email}
 ```
 
----
 <br>
 
-##Template Literals
+### Template Literals
 
 https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals
 
-### ES5
+#### ES5
 ```javascript
 var username = req.body.username
 if ( !username ) {
@@ -102,7 +121,7 @@ if ( !username ) {
 }
 ```
 
-### ES6
+#### ES6
 ```javascript
 let {username} = req.body
 if ( !username ) {
@@ -110,32 +129,30 @@ if ( !username ) {
 }
 ```
 
----
 <br>
 
-##Default Parameters
+### Default Parameters
 기본 매개변수
 https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/Default_parameters
 
-### ES5
+#### ES5
 ```javascript
 var greeting = function(username, date, message) {
-	var username = typeof username !== 'undefined' ? username : 'anonymous'
-	var date     = typeof date     !== 'undefined' ? date     : new Date()
-	var message  = typeof message  !== 'undefined' ? message  : 'hello'
+	username = typeof username !== 'undefined' ? username : 'anonymous'
+	date     = typeof date     !== 'undefined' ? date     : new Date()
+	message  = typeof message  !== 'undefined' ? message  : 'hello'
 	
 	return message + ' ' +  username + ' at ' + date
 }
 ```
 
-### ES6
+#### ES6
 ```javascript
 const greeting = (username='anonymous', date=new Date(), message='hello') => {
 	return `${message} ${username} at ${date}`
 }
 ```
 
----
 <br>
 
 ## Promise - Co - async/await
@@ -144,12 +161,12 @@ const greeting = (username='anonymous', date=new Date(), message='hello') => {
 ECMAScript 2015/  ES6 에 Promise가 추가되기 전에 ES5 환경에서는 아래의 모듈들을 사용해서 Promise를 사용했다.
 [bluebird](http://bluebirdjs.com/docs/getting-started.html), [Q](https://github.com/kriskowal/q)
 
-그러나, ECMAScript 2015에서는 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)가 표준 내장 객체로 추가되서 외부 모듈 없이 사용할 수 있다.
+그러나, ECMAScript 2015에서는 [Promise](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise)가 표준 내장 객체로 추가돼서 외부 모듈 없이 사용할 수 있다.
 필자는 표준 내장 객체를 사용하는 것을 추천한다. 물론 다른 모듈들을 사용하면 사용상 편의성이 있다.
 **튜닝의 끝은 순정이라고..**
 
-Promise를 설명하고자 하는게 아니다.  ( [자바스크립트 프라미스: 소개](https://developers.google.com/web/fundamentals/getting-started/primers/promises?hl=ko) )
-모든 비동기 함수는 Promise를 반환하게 만드는게 핵심이다.
+Promise를 설명하고자 하는 게 아니다.  ( [자바스크립트 프라미스: 소개](https://developers.google.com/web/fundamentals/getting-started/primers/promises?hl=ko) )
+모든 비동기 함수는 Promise를 반환하게 만드는 게 핵심이다.
 
 ```javascript
 const getName = (user_id) => {
@@ -192,10 +209,10 @@ Callback - Promise - Generator(Co) - async/await
 [co](https://www.npmjs.com/package/co)
 
 Co 모듈을 처음 사용할 때는 거의 신세계였다.
-JavaScript 코드를 Java, Python, PHP 처럼 동기식으로 표현할 수 있었다.
+JavaScript 코드를 Java, Python, PHP처럼 동기식으로 표현할 수 있었다.
 가장 좋은 점은 try-catch를 아름답게 사용할 수 있었다.
 
-Co 모듈을 알게된 후로 모든 비동기 함수는 Co를 활용한 Generator 함수로 만들었다.
+Co 모듈을 알게 된 후로 모든 비동기 함수는 Co를 활용한 Generator 함수로 만들었다.
 
 Co 모듈은 Promise, Array, Object, Generator, ... 을 반환하는 함수에 yield 구문을 사용할 수 있다고 나와있다.
 > The yieldable objects currently supported are:
@@ -212,14 +229,14 @@ Co 모듈은 Promise, Array, Object, Generator, ... 을 반환하는 함수에 y
 그래서 위의 Promise 설명에서 모든 비동기 함수는 Promise를 반환한다는 규칙을 정한 것이다.
 
 Co 모듈의 반환 규칙 한 가지 때문에 이런 규칙을 정한 것은 아니다.
-바로 끝판왕 async/await 함수로 리팩토링 할 때 쉽게하기 위한 큰 그림이었다.
+바로 끝판왕 async/await 함수로 리팩토링 할 때 쉽게 하기 위한 큰 그림이었다.
 
 
 #### async/await
 [async function](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/async_function)
 
 링크의 Description에 다음과 같은 설명이 있다.
-> async함수가 호출되어 졌을때, 이 함수는 Promise을 반환한다. 
+> async함수가 호출되어졌을 때, 이 함수는 Promise을 반환한다. 
 
 이래서 처음 Promise 설명에서 필자가 만드는 모든 비동기 함수는 Promise를 리턴한다는 규칙을 만든 것이다.
 
@@ -319,6 +336,64 @@ if ( set <= 2) // 1,2
 
 ## [underscore.js](http://underscorejs.org/) 
 **or [lodash.js](https://lodash.com/)**
+
+JavaScript로 코딩할 때 지키는 철학이 있는데, 최대한 순수 객체를 사용하려고 한다.
+Promise도 bluebird, Q 같은 좋은 라이브러리가 있지만, 기본 내장 객체를 사용한다.
+[Typescript](https://www.typescriptlang.org/)도 같은 이유에서 사용을 안 하고 있다.
+
+그러나, underscore.js 만큼은 남발 수준으로 사용한다.
+심지어 [Array.prototype.map()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map)을 두고 [_.map()](http://underscorejs.org/#map)을 사용한다.
+
+underscore.js를 잘 사용하면 데이터를 정말 쉽고 아름답게 다룰 수 있다.
+함수 지향 라이브러리라서 코드가 추상적으로 보이지만, 익숙해지면 정말 아름다운 코드들이 탄생한다.
+
+```javascript
+const users = [
+    {
+        name: lsh,
+        age: 27,
+        job: Programmer
+    },
+    {
+        name: Kendrick,
+        age: 30,
+        job: Rapper
+    },
+    {
+        name: statham,
+        age: 50,
+        job: Actor
+    }
+]
+
+_.pluck(users, 'name');
+// =>['lsh', 'Kendrick', 'statham']
+
+_.pluck(users, 'job');
+// =>['Programmer', 'Rapper', 'Actor']
+```
+
+```javascript
+_.groupBy(['one', 'two', 'three'], 'length');
+// => {3: ["one", "two"], 5: ["three"]}
+
+_.contains([1, 2, 3], 3);
+// => true
+
+_.compact([0, 1, false, 2, '', 3]);
+// => [1, 2, 3]
+
+
+
+_.pairs({one: 1, two: 2, three: 3});
+// => [["one", 1], ["two", 2], ["three", 3]]
+
+_.pick({name: 'moe', age: 50, userid: 'moe1'}, 'name', 'age');
+// => {name: 'moe', age: 50}
+
+_.omit({name: 'moe', age: 50, userid: 'moe1'}, 'userid');
+// => {name: 'moe', age: 50}
+```
 
 <br>
 
