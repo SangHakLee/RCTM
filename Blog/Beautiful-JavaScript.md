@@ -17,26 +17,27 @@ ES6 이상으로 넘어가기 위한 몇 가지 걸림돌이 있다.
 
 **아름다운 코드에 대한 열망**
 
-> Node.js를 통해 JavaScript를 배웠지만, JavaScript의 복잡한 Callback 구조는 코드를 보기 힘들게 했다.
-> 다른 스크립트 언어에서 제공하는 깔끔한 문법이 있으면 좋다고 생각했는데, ES6가 이런 요구사항을 만족시켜줄 거라 생각해서 새로운 Node.js 프로젝트에 ES6를 도입했다. (당시 Node.js v6.10.x 의 ES6 coverage가 99%였기 때문에 사용 가능했다.)
+> Node.js를 통해 JavaScript를 처음 제대로 배우고 사용다.
+> JavaScript의 복잡한 Callback 구조는 코드를 보기 힘들게 했다.
+> 다른 스크립트 언어에서 제공하는 깔끔한 문법이 있으면 좋다고 생각했는데, ES6가 이런 요구사항을 만족시켜줄 거라 생각해서 새로운 [Node.js 프로젝트에 ES6를 도입했다.](http://sanghaklee.tistory.com/48) (당시 Node.js v6.10.x 의 ES6 coverage가 99%였기 때문에 사용 가능했다.)
 
 ## Background
 ES5, ES6의 대한 설명을 바로 하는 것보다 JavaScript의 동작 원리를 알고 ES5, ES6를 알면 좋을 것 같다.
 
 ### JavaScript Engine
 
-- **V8** - Google, Opera
-- Rhino - Mozilla
-- JavascriptCore - Safari
+- **[V8](https://developers.google.com/v8/)** - Google, Opera
+- [Rhino](https://github.com/mozilla/rhino) - Mozilla
+- [JavascriptCore](https://developer.apple.com/documentation/javascriptcore) - Safari
 - [List of ECMAScript engines](https://en.wikipedia.org/wiki/List_of_ECMAScript_engines)
 
-> Javascript Engine은 JavaScript로 작성된 코드를 해석하고 실행하는 인터프리터
+> Javascript Engine은 JavaScript로 작성된 코드를 해석하고 실행하는 [인터프리터](https://www.google.co.kr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=6&ved=0ahUKEwicmvaY4PnWAhXCnpQKHXIvAEMQFghEMAU&url=http://huns.me/development/360&usg=AOvVaw0tNctC4xQAgfmrsJ1Lppuy)
 
 #### Interpereter
 프로그래밍 언어의 소스 코드를 바로 실행하는 컴퓨터 프로그램 또는 환경을 말한다. 
 
 #### JIT Compile
-JIT 컴파일(just-in-time compilation) 또는 동적 번역(dynamic translation)은 프로그램을 실제 실행하는 시점에 기계어로 번역하는 컴파일 기법이다. 
+[JIT 컴파일(just-in-time compilation)](https://ko.wikipedia.org/wiki/JIT_%EC%BB%B4%ED%8C%8C%EC%9D%BC) 또는 동적 번역(dynamic translation)은 프로그램을 실제 실행하는 시점에 기계어로 번역하는 컴파일 기법이다. 
 실행 시점에서 기계어 코드를 생성하면서 그 코드를 캐싱하여, 같은 함수가 여러 번 불릴 때 매번 기계어 코드를 생성하는 것을 방지한다.
 
 #### Engine vs Runtime
@@ -55,10 +56,14 @@ JIT 컴파일(just-in-time compilation) 또는 동적 번역(dynamic translation
 <br>
 
 ## Beautiful Code
-> 아래의 ES6부터 추가된 문법은 JavaScript 코딩 중 가장 많이 사용하는 문법이다.
-> 또한, 이러한 sugar-code 스러운 느낌이 마음에 들어 ES6를 도입했다.
 
 **Short, Simple, Small and Stupid**
+아름다운 코드는 짧고 간결해야 한다. (함수형 프로그래밍에 빠진 이유)
+함수는 최대한 독립적으로 만들어서 책임 범위를 작게하고 관심사를 분리해야한다.
+**하지만,** 이런 코딩은 정말 어렵다...
+
+> 아래의 ES6부터 추가된 문법은 JavaScript 코딩 중 가장 많이 사용하는 문법이다.
+> 또한, 이러한 sugar-code 스러운 느낌이 마음에 들어 ES6를 도입했다.
 
 <br>
 
@@ -205,6 +210,27 @@ Callback - Promise - Generator(Co) - async/await
 
 아름다운 비동기 코드를 만들기 위해 검색을 많이 했는데, [ES6의 제너레이터를 사용한 비동기 프로그래밍](http://meetup.toast.com/posts/73)  블로그를 보고 현재의 비동기 코드가 만들어졌다.
 
+```javascript
+const gen = (a, b, c, conn) => {
+    return new Promise( (resolve, reject) => {
+	return co(function* () {
+	    try {
+		yield async1(a);
+		yield async2(b);
+		yield async3(c);
+
+		resolve(true);
+	    } catch (e) {
+		reject(e);
+	    } finally {
+                conn = null;
+	    }
+	});
+    });
+};
+
+```
+
 #####  NPM Co
 [co](https://www.npmjs.com/package/co)
 
@@ -233,6 +259,29 @@ Co 모듈의 반환 규칙 한 가지 때문에 이런 규칙을 정한 것은 �
 
 
 #### async/await
+
+```javascript
+function resolveAfter2Seconds(x) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(x);
+    }, 2000);
+  });
+}
+
+
+async function add1(x) {
+  const a = await resolveAfter2Seconds(20);
+  const b = await resolveAfter2Seconds(30);
+  return x + a + b;
+}
+
+add1(10).then(v => {
+  console.log(v);  // prints 60 after 4 seconds.
+});
+```
+
+
 [async function](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/async_function)
 
 링크의 Description에 다음과 같은 설명이 있다.
@@ -243,6 +292,9 @@ Co 모듈의 반환 규칙 한 가지 때문에 이런 규칙을 정한 것은 �
 필자가 개발하던 당시에는 ECMAScript 2016 / ES7이 가장 최신 스펙이었다. ( 2017.04)
 
 위에서 설명한 큰 그림은 ECMAScript 2017이  Release 되면 모든 Co-Generator 함수를 async/await로 바꾸려는 계획이었다.
+
+
+##### BigPicture
 
 ```javascript
 // ES6 - Generator
@@ -399,6 +451,8 @@ _.omit({name: 'moe', age: 50, userid: 'moe1'}, 'userid');
 
 
 ### Conclusion
+
+[![Foo](http://img.youtube.com/vi/H834NXYGAWo/0.jpg)](https://www.youtube.com/embed/H834NXYGAWo?enablejsapi=1&t=18s)
 
 > 태양처럼 너는 밝고 아리따워
 > 여름처럼 너는 밝고 아리따워
