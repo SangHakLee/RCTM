@@ -43,7 +43,20 @@ ES5, ES6의 대한 설명을 바로 하는 것보다 JavaScript의 동작 원리
 #### Engine vs Runtime
 - **Engine**: JavaScript로 작성된 스크립트를 기계 실행 가능하게 변경. 구문 분석 및 JIT 컴파일
 - **Runtime** : 실행 중 프로그램에서 사용할 수있는 기본 라이브러리를 제공
-> Chrome and Node.js therefore share the same engine (Google’s V8), but they have different runtime (execution) environments.
+
+> **Chrome and Node.js therefore share the same `engine` (Google’s V8), but they have different `runtime` (execution) environments.**
+> 
+> HTML/JS를 이용한 웹 개발과 Node.js를 이용한 서버 개발을 모두 다 해본 사람이라면 이해가 쉽다.
+> 
+> Chrome 브라우저에서 f12 키를 누르고 console 창에 alert('hi') 라고 입력하면 알림창이 뜬다. 
+> 사실 `window.alert('hi')`이 정확한 표현이다. Chrome의 runtime이 제공하는 라이브러리에 [window](https://developer.mozilla.org/ko/docs/Web/API/Window)라는 객체가 있고, 이 안에는 [alert](https://developer.mozilla.org/ko/docs/Web/API/Window/alert)이라는 함수가 있기 때문에 가능하다.
+> 
+> Node.js에서 console.log(__dirname)을 입력하면, 현재 디렉토리 경로를 리턴한다. ([REPL](https://repl.it/)에서 불가, script에서 가능)
+> 사실 `global.__dirname`이 정확한 표현이다. Node.js의 runtime이 제공하는 라이브러이에 [global](https://nodejs.org/docs/latest/api/globals.html)이라는 객체가 있고 , 이 안에는 [__dirname](https://nodejs.org/docs/latest/api/globals.html#globals_dirname)이라는 객체가 있기 때문에 가능하다.
+> 
+> Chrome과 Node.js 모두 같은 V8 엔진으로 자바스크립트 코드를 해석하지만, runtime이 다르기 때문에 실핼 중 기본으로 사용할 수 있는 라이브러리가 다른 것이다.
+> alert()은 Chrome만 가능하고 Node.js는 불가하다. 반대로, __dirname은 Node.js만 가능하고 Chrome은 불가하다.
+> `console.log` 함수는 [Chrome](https://developers.google.com/web/tools/chrome-devtools/console/console-reference?hl=ko), [Node.js](https://nodejs.org/docs/latest/api/globals.html#globals_console) 모두 제공하는 라이브러리기 때문에 모두 사용할 수 있다.
 
 
 #### Overall
