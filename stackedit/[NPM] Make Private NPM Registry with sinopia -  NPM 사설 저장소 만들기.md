@@ -78,7 +78,7 @@ $ sinopia
 ### Run sinopia Server with custom config
 
 #### 1. 폴더 생성
-````bash
+```bash
 $ mkdir ~/npm-registry & cd ~/npm-registry
 ```
 앞으로 사설 NPM 저장소는 `npm-registry/`에서 관리된다.
@@ -221,5 +221,5 @@ Node.js를 이용해서 회사의 시스템을 구성한다면 http://registry.n
 ### References
 -  [Maintaining a Private NPM registry for your Organization with Sinopia](http://thejackalofjavascript.com/maintaining-a-private-npm-registry/)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc1NDE1NTk2MV19
+eyJoaXN0b3J5IjpbLTE4NjQ1NjAyMjUsLTc1NDE1NTk2MV19
 -->
