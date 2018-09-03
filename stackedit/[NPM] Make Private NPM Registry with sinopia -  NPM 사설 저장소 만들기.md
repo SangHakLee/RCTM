@@ -222,6 +222,6 @@ Node.js를 이용해서 회사의 시스템을 구성한다면 http://registry.n
 -  [Maintaining a Private NPM registry for your Organization with Sinopia](http://thejackalofjavascript.com/maintaining-a-private-npm-registry/)
 <!--stackedit_data:
 eyJwcm9wZXJ0aWVzIjoiYXV0aG9yOiBzYW5naGFrbGVlXG4iLC
-JoaXN0b3J5IjpbMTgyMDA4NDQzMywtMTg2NDU2MDIyNSwtNzU0
-MTU1OTYxXX0=
+JoaXN0b3J5IjpbLTQwMjE4NjY1NiwxODIwMDg0NDMzLC0xODY0
+NTYwMjI1LC03NTQxNTU5NjFdfQ==
 -->
