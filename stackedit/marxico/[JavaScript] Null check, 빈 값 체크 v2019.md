@@ -76,7 +76,9 @@ typeof new Boolean() != typeof false
 new Boolean() == false
 ```
 - `new` 로  생성하면 타입은 `object`지만 값으로 비교할 땐 
-https://stackoverflow.com/questions/17256182/what-is-the-difference-between-string-primitives-and-string-objects-in-javascrip
+	-  `new`로 생성하면 Object
+	- 
+https://stackoverflow.com/questions/17256182/what-is-the-difference-between-string-primitives-and-string-objects-in-javascript
 
 ```javascript
 new Boolean() // Boolean{false}, == false
@@ -87,6 +89,6 @@ new Error() // Error at <anonymous>
 ```
 - 위 객체들은 자명하게 값을 리턴
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MzU4OTIwOTMsMTIzNDQyNjg5NSwxNT
+eyJoaXN0b3J5IjpbLTE0NTg2Njk5MzYsMTIzNDQyNjg5NSwxNT
 czMTI2NzA5LC0zMDE1ODc1NzJdfQ==
 -->
