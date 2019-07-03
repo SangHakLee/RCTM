@@ -111,11 +111,11 @@ new Error() // Error at <anonymous>
 
 ## Underscore.js & Lodash
 
-[Underscore.js](https://underscorejs.org/), [Lodash](https://lodash.com/)에 `isEmpty`가 이미 존재한다.
+[Underscore.js](https://underscorejs.org/), [Lodash](https://lodash.com/)에는 `isEmpty`가 이미 존재한다.
 
 [map](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map)을 두고 [_.map_](https://underscorejs.org/#map)을 쓸 정도로 Undederscore.js 성애자인 필자가 [_.isEmpty](https://underscorejs.org/#isEmpty) 를 사용하지 않는 이유가 있다.
 
-필자가 원하는 것은 **파라미터의 값이 비었는지 확인**하는 것이다. 하지만,  `_.isEmpty`는 필자의 의도와 다르게 동작한다.
+필자가 원하는 것은 **파라미터의 값이 비었는지** 확인 하는 것이다. 하지만,  `_.isEmpty`는 필자의 의도와 다르게 동작한다.
 
 - `boolean` return **true**
 	- _.isEmpty(true)
@@ -137,7 +137,7 @@ JavaScript로 데이터를 다루다 보면 이렇게 처리해야 하는 경우
 
 필자의 모듈이나 Underscore.js 모듈을 활용해서 각 상황에 맞는 `isEmpty`를 만들어 사용하자.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQwMDcwNTU4NCwtMzAwMjI1MTA4LDczND
-kyNzE4NiwtMjk3MjQzMjIyLDEyMzQ0MjY4OTUsMTU3MzEyNjcw
-OSwtMzAxNTg3NTcyXX0=
+eyJoaXN0b3J5IjpbLTE0NzYyNDc2NTAsLTMwMDIyNTEwOCw3Mz
+Q5MjcxODYsLTI5NzI0MzIyMiwxMjM0NDI2ODk1LDE1NzMxMjY3
+MDksLTMwMTU4NzU3Ml19
 -->
