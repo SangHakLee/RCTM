@@ -16,7 +16,7 @@
 
 그래서 최초에 의도한 기능대로 동작하는 `isEmpty`를 다시 작성했다.
 
-`is-`로 시작하는 함수 관리하기 위해 `is``is`라는 NPM 모듈로 만들었다.
+`is-`로 시작하는 함수 관리하기 위해 `is`라는 NPM 모듈로 만들었다.
 
 ### is
 [https://sanghaklee.github.io/is](https://sanghaklee.github.io/is)
@@ -101,6 +101,6 @@ new Error() // Error at <anonymous>
 - JavaScript는 6가지 Primitive를 제외하면 모두 Object
 	- `new Object()`를 제외한 모든 Object는 값이 채워졌다고 판단
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODkwNTY1MTU4LDEyMzQ0MjY4OTUsMTU3Mz
-EyNjcwOSwtMzAxNTg3NTcyXX0=
+eyJoaXN0b3J5IjpbMTUzMDczNDIwNCwxMjM0NDI2ODk1LDE1Nz
+MxMjY3MDksLTMwMTU4NzU3Ml19
 -->
