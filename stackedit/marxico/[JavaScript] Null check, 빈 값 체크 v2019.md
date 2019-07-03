@@ -22,6 +22,7 @@
 
 ### is
 [https://github.com/SangHakLee/is](https://github.com/SangHakLee/is)
+
 [https://sanghaklee.github.io/is](https://sanghaklee.github.io/is)
 ```javascript
 const empty = (value) => {
@@ -136,7 +137,7 @@ JavaScript로 데이터를 다루다 보면 이렇게 처리해야 하는 경우
 
 필자의 모듈이나 Underscore.js 모듈을 활용해서 각 상황에 맞는 `isEmpty`를 만들어 사용하자.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMwNTk2ODA1LC0zMDAyMjUxMDgsNzM0OT
-I3MTg2LC0yOTcyNDMyMjIsMTIzNDQyNjg5NSwxNTczMTI2NzA5
-LC0zMDE1ODc1NzJdfQ==
+eyJoaXN0b3J5IjpbMTI0ODE1MTQ0NywtMzAwMjI1MTA4LDczND
+kyNzE4NiwtMjk3MjQzMjIyLDEyMzQ0MjY4OTUsMTU3MzEyNjcw
+OSwtMzAxNTg3NTcyXX0=
 -->
