@@ -90,6 +90,8 @@ new Boolean() == false
 - [자바스크립트의 원시 타입(Primitive Type)](https://velog.io/@jakeseo_me/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%9D%BC%EB%A9%B4-%EC%95%8C%EC%95%84%EC%95%BC-%ED%95%A0-33%EA%B0%80%EC%A7%80-%EA%B0%9C%EB%85%90-2-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EC%9D%98-%EC%9B%90%EC%8B%9C-%ED%83%80%EC%9E%85Primitive-Type-%EB%B2%88%EC%97%AD)
 - https://stackoverflow.com/questions/17256182/what-is-the-difference-between-string-primitives-and-string-objects-in-javascript
 
+---
+
 ```javascript
 new Boolean() // Boolean{false}, == false
 new Number() // Number{0}, == 0
@@ -101,6 +103,6 @@ new Error() // Error at <anonymous>
 - JavaScript는 6가지 Primitive를 제외하면 모두 Object
 	- `new Object()`를 제외한 모든 Object는 값이 채워졌다고 판단
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcwMjMyNDIzNywxMjM0NDI2ODk1LDE1Nz
+eyJoaXN0b3J5IjpbLTI5NzI0MzIyMiwxMjM0NDI2ODk1LDE1Nz
 MxMjY3MDksLTMwMTU4NzU3Ml19
 -->
