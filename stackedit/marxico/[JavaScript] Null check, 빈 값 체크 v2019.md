@@ -89,8 +89,9 @@ new RegExp() // /(?:)/
 new Error() // Error at <anonymous>
 ```
 - 위 객체들은 자명하게 값을 리턴
-- JavaScript는 
+- JavaScript는 6가지 Primitive를 제외하면 모두 Object
+	- `new Object()`를 제외한 모든 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDM1OTUwMTAsMTIzNDQyNjg5NSwxNT
-czMTI2NzA5LC0zMDE1ODc1NzJdfQ==
+eyJoaXN0b3J5IjpbNDM2MzgzNDYzLDEyMzQ0MjY4OTUsMTU3Mz
+EyNjcwOSwtMzAxNTg3NTcyXX0=
 -->
