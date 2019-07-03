@@ -129,10 +129,12 @@ JavaScript로 데이터를 다루다 보면 이렇게 처리해야 하는 경우
 이러한 요구 때문에 Underscore.js, Lodash의 `_.isEmpty`를 사용하지 않고 새로 만들어서 사용했다.
 
 ### Conclusion
-요구사항에 따라서 **비어 있다**라는 개념은 바뀔 수 있다.
-어떤 경우엔 Underscore.js, Lodash의 `_.isEmpty`가 적합할 수 있고, 어떤 경우엔 필자의 `is.empty`가 적합할 수 잇다
 
+요구사항에 따라서 **비어 있다**라는 개념은 바뀔 수 있다.
+어떤 경우엔 Underscore.js, Lodash의 `_.isEmpty`가 적합할 수 있고, 어떤 경우엔 필자의 `is.empty`가 적합할 수 있다.
+
+필자의 모듈이나 Underscore.js 모듈을 활용해서 각 상황에 맞는 `isEmpty`를 만들어 사용하자.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMzgzNTkwMzgsLTI5NzI0MzIyMiwxMj
-M0NDI2ODk1LDE1NzMxMjY3MDksLTMwMTU4NzU3Ml19
+eyJoaXN0b3J5IjpbNzM0OTI3MTg2LC0yOTcyNDMyMjIsMTIzND
+QyNjg5NSwxNTczMTI2NzA5LC0zMDE1ODc1NzJdfQ==
 -->
