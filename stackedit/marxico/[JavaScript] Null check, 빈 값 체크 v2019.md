@@ -1,9 +1,10 @@
 
 # [JavaScript] Null check, 빈 값 체크 v2019
 
+###  Introduction
 필자의 블로그 중 가장 조회수가 높은 글이다.
 
-세번째 게시글이 만큼 블로그 초장기에 작성한 내용이다.
+세번째 게시글인 만큼 블로그 초장기에 작성한 내용이다.
 
 근 일년간 블로그 활동에 소홀했었다. 다시 개발 블로그를 열심히 하기로 마음을 먹고 블로그 통계를 확인했다.
 
@@ -11,7 +12,7 @@
 
 
 ## isEmpty
-`gist`에 공유한 `isEmpty`는 문제점이 있다.  `false` 입력 값에 대해선 의도와 다른 동작을 한다.
+`gist`에 공유한 [isEmpty](https://gist.github.com/SangHakLee/4da6159a7a08cdd12132)는 문제점이 있다.  `false` 입력 값에 대해선 의도와 다른 동작을 한다.
 
 그래서 최초에 의도한 기능대로 동작하는 `isEmpty`를 다시 작성했다.
 
@@ -78,6 +79,6 @@ new RegExp() // /(?:)/
 new Error() // Error at <anonymous>
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIzNDQyNjg5NSwxNTczMTI2NzA5LC0zMD
-E1ODc1NzJdfQ==
+eyJoaXN0b3J5IjpbLTEzMjkzMjMyOTcsMTIzNDQyNjg5NSwxNT
+czMTI2NzA5LC0zMDE1ODc1NzJdfQ==
 -->
