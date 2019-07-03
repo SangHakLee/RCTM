@@ -10,9 +10,10 @@
 
 
 ## isEmpty
-`gist`에 공유한 [isEmpty](https://gist.github.com/SangHakLee/4da6159a7a08cdd12132)는 문제점이 있다.  `false` 입력 값에 대해선 의도와 다른 동작을 한다.
+`gist`에 공유한 [isEmpty](https://gist.github.com/SangHakLee/4da6159a7a08cdd12132)는 문제점이 있다.  그 당시엔  왜 그렇게 생각했는지 기억이 나지 않지만,  입력 값 `false`에 대해서 비어있지 않다는 **false**를 리턴하도록 했다.
+하지만, 넘어온 파라미터의 
 
-그래서 최초에 의도한 기능대로 동작하는 `isEmpty`를 다시 작성했다.
+그래서 의도한 기능대로 동작하는 `isEmpty`를 다시 작성했다.
 
 `is-`로 시작하는 함수 관리하기 위해 `is`라는 NPM 모듈로 만들었다.
 
@@ -101,6 +102,6 @@ new Error() // Error at <anonymous>
 - JavaScript는 6가지 Primitive를 제외하면 모두 Object
 	- `new Object()`를 제외한 모든 Object는 값이 채워졌다고 판단
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkxNTYzNDg4OSwtMjk3MjQzMjIyLDEyMz
+eyJoaXN0b3J5IjpbLTU4NTQ2ODU5NCwtMjk3MjQzMjIyLDEyMz
 Q0MjY4OTUsMTU3MzEyNjcwOSwtMzAxNTg3NTcyXX0=
 -->
