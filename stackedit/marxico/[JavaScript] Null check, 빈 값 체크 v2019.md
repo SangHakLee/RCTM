@@ -106,8 +106,10 @@ new Error() // Error at <anonymous>
 	- `new Object()`를 제외한 모든 Object는 값이 채워졌다고 판단
 
 
+### Conclusion
+요구사항에 따라서 **비어 있다**라는 개념은 바뀔 수 있다.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkzMDY1NDk2MSwtMjk3MjQzMjIyLDEyMz
+eyJoaXN0b3J5IjpbMjEzNjIwMjg3OCwtMjk3MjQzMjIyLDEyMz
 Q0MjY4OTUsMTU3MzEyNjcwOSwtMzAxNTg3NTcyXX0=
 -->
