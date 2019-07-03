@@ -75,9 +75,9 @@ typeof false // boolean
 typeof new Boolean() != typeof false
 new Boolean() == false
 ```
-- `new` 로  생성하면 타입은 `object`지만 값으로 비교할 땐 
+- `new` 로  생성하면 타입은 `object`지만 값으로 비교할 땐 false이다.
 	-  `new`로 생성하면 Object
-	- 
+	-  `false` 등 리터럴로 생성하면 Primitive
 https://stackoverflow.com/questions/17256182/what-is-the-difference-between-string-primitives-and-string-objects-in-javascript
 
 ```javascript
@@ -89,6 +89,6 @@ new Error() // Error at <anonymous>
 ```
 - 위 객체들은 자명하게 값을 리턴
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NTg2Njk5MzYsMTIzNDQyNjg5NSwxNT
+eyJoaXN0b3J5IjpbLTIwODIxNTE0MzgsMTIzNDQyNjg5NSwxNT
 czMTI2NzA5LC0zMDE1ODc1NzJdfQ==
 -->
