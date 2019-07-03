@@ -111,12 +111,14 @@ new Error() // Error at <anonymous>
 
 [Underscore.js](https://underscorejs.org/). [Lodash](https://lodash.com/)에 `isEmpty`가 이미 존재한다.
 
+[map](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map)을 두고 [_.map_](https://underscorejs.org/#map)을 쓸 정도로 Undederscore.js 성애자인 필자가 [_.isEmpty](https://underscorejs.org/#isEmpty) 를 사용하지 않는 이유가 있다.
 
+필자가 원하는 것은 **파라미터의 값이 비었는지 확인**하는 것이다. 하지만,  `_.isEmpty</code>`는 필자의 의도와 다르게 동작한다.``
 
 ### Conclusion
 요구사항에 따라서 **비어 있다**라는 개념은 바뀔 수 있다.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NjY5NzM0NDEsLTI5NzI0MzIyMiwxMj
-M0NDI2ODk1LDE1NzMxMjY3MDksLTMwMTU4NzU3Ml19
+eyJoaXN0b3J5IjpbOTk1OTc5MDkwLC0yOTcyNDMyMjIsMTIzND
+QyNjg5NSwxNTczMTI2NzA5LC0zMDE1ODc1NzJdfQ==
 -->
