@@ -2,7 +2,7 @@
 # [JavaScript] Null check, 빈 값 체크 v2019
 
 ###  Introduction
-필자의 블로그 중 가장 조회수가 높은 글이다.
+[[JavaScript] Null check, 빈 값 체크](https://sanghaklee.tistory.com/3) 필자의 블로그 중 가장 조회수가 높은 글이다.
 
 세번째 게시글인 만큼 블로그 초장기에 작성한 내용이다.
 
@@ -101,6 +101,6 @@ new Error() // Error at <anonymous>
 - JavaScript는 6가지 Primitive를 제외하면 모두 Object
 	- `new Object()`를 제외한 모든 Object는 값이 채워졌다고 판단
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzQ5ODM1OTI1LC0yOTcyNDMyMjIsMTIzND
-QyNjg5NSwxNTczMTI2NzA5LC0zMDE1ODc1NzJdfQ==
+eyJoaXN0b3J5IjpbMTkxNTYzNDg4OSwtMjk3MjQzMjIyLDEyMz
+Q0MjY4OTUsMTU3MzEyNjcwOSwtMzAxNTg3NTcyXX0=
 -->
