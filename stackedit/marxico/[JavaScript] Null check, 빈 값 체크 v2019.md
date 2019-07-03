@@ -6,9 +6,7 @@
 
 세번째 게시글인 만큼 블로그 초장기에 작성한 내용이다.
 
-근 일년간 블로그 활동에 소홀했었다. 다시 개발 블로그를 열심히 하기로 마음을 먹고 블로그 통계를 확인했다.
 
-어떤 게시글들이 인기 있는지 확인해보고 싶어서였다.
 
 
 ## isEmpty
@@ -103,6 +101,6 @@ new Error() // Error at <anonymous>
 - JavaScript는 6가지 Primitive를 제외하면 모두 Object
 	- `new Object()`를 제외한 모든 Object는 값이 채워졌다고 판단
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI5NzI0MzIyMiwxMjM0NDI2ODk1LDE1Nz
-MxMjY3MDksLTMwMTU4NzU3Ml19
+eyJoaXN0b3J5IjpbNzQ5ODM1OTI1LC0yOTcyNDMyMjIsMTIzND
+QyNjg5NSwxNTczMTI2NzA5LC0zMDE1ODc1NzJdfQ==
 -->
