@@ -1,6 +1,8 @@
 
 # [JavaScript] Null check, 빈 값 체크 v2019
 
+![isempty](https://user-images.githubusercontent.com/9030565/60589516-a813ac80-9dd4-11e9-9064-8899828bda61.png)
+
 ###  Introduction
 [[JavaScript] Null check, 빈 값 체크](https://sanghaklee.tistory.com/3) 필자의 블로그 중 가장 조회수가 많은 글이다.
 
@@ -137,7 +139,8 @@ JavaScript로 데이터를 다루다 보면 이렇게 처리해야 하는 경우
 
 필자의 모듈이나 Underscore.js 모듈을 활용해서 각 상황에 맞는 `isEmpty`를 만들어 사용하자.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU2NDI3OTU2MCwtMTQ3NjI0NzY1MCwtMz
-AwMjI1MTA4LDczNDkyNzE4NiwtMjk3MjQzMjIyLDEyMzQ0MjY4
-OTUsMTU3MzEyNjcwOSwtMzAxNTg3NTcyXX0=
+eyJoaXN0b3J5IjpbLTEyMTg5NDYzODUsLTU2NDI3OTU2MCwtMT
+Q3NjI0NzY1MCwtMzAwMjI1MTA4LDczNDkyNzE4NiwtMjk3MjQz
+MjIyLDEyMzQ0MjY4OTUsMTU3MzEyNjcwOSwtMzAxNTg3NTcyXX
+0=
 -->
