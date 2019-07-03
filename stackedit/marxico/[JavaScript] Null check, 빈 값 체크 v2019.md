@@ -48,20 +48,21 @@ is.empty('') // true
 
 
 ### 채워진 값
-아래는 의심의 여지가 없는 명확하게 채워진 값들이다. 
 ```javascript
 1
 'string'
 [1]
 {a:1}
 ```
+- 의심의 여지가 없는 명확하게 채워진 값들이다. 
 
-`boolean`도 값이다. 특히 `false`도 값이다.
 ```javascript
 true
 false
 ```
+- `boolean`도 값이다. 특히 `false`도 값이다.
 
+#### Object
 `Object`는 까다롭다. 
 
 ```javascript
@@ -85,6 +86,6 @@ new RegExp() // /(?:)/
 new Error() // Error at <anonymous>
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQyMjIyOTMxOCwxMjM0NDI2ODk1LDE1Nz
-MxMjY3MDksLTMwMTU4NzU3Ml19
+eyJoaXN0b3J5IjpbLTE5NjY1MjQwNjEsMTIzNDQyNjg5NSwxNT
+czMTI2NzA5LC0zMDE1ODc1NzJdfQ==
 -->
