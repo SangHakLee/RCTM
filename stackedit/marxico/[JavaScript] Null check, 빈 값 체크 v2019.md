@@ -105,11 +105,18 @@ new Error() // Error at <anonymous>
 - JavaScript는 6가지 Primitive를 제외하면 모두 Object
 	- `new Object()`를 제외한 모든 Object는 값이 채워졌다고 판단
 
+[Test Data-set](https://github.com/SangHakLee/is/blob/master/test/datas/empty.js)을 보면 필자가 어떤 값들을 **빈 값**이라 보고 어떤 값들을  **채워진 값**이라 보는지 알 수 있다.
+
+## Underscore.js & Lodash
+
+[Underscore.js](https://underscorejs.org/). [Lodash](https://lodash.com/)에 `isEmpty`가 이미 존재한다.
+
+
 
 ### Conclusion
 요구사항에 따라서 **비어 있다**라는 개념은 바뀔 수 있다.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEzNjIwMjg3OCwtMjk3MjQzMjIyLDEyMz
-Q0MjY4OTUsMTU3MzEyNjcwOSwtMzAxNTg3NTcyXX0=
+eyJoaXN0b3J5IjpbLTE0NjY5NzM0NDEsLTI5NzI0MzIyMiwxMj
+M0NDI2ODk1LDE1NzMxMjY3MDksLTMwMTU4NzU3Ml19
 -->
