@@ -12,7 +12,7 @@
 ## isEmpty
 `gist`에 공유한 [isEmpty](https://gist.github.com/SangHakLee/4da6159a7a08cdd12132)는 문제점이 있다.  그 당시엔  왜 그렇게 생각했는지 기억이 나지 않지만,  입력 값 `false`에 대해서 비어있지 않다는 **false**를 리턴하도록 했다.
 
-하지만, isEmpty는 파라미터의 비교 연산 시 `true|false` 를 반환 하느냐에 대한 내용이 아니다.
+하지만, isEmpty는 파라미터의 비교 연산 시 `true|false` 를 반환하느냐에 대한 내용이 아니다.
 
 넘어온 파라미터가 **비어 있냐**는 것이다.
 
@@ -115,7 +115,7 @@ new Error() // Error at <anonymous>
 
 [map](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map)을 두고 [_.map_](https://underscorejs.org/#map)을 쓸 정도로 Undederscore.js 성애자인 필자가 [_.isEmpty](https://underscorejs.org/#isEmpty) 를 사용하지 않는 이유가 있다.
 
-필자가 원하는 것은 **파라미터의 값이 비었는지** 확인 하는 것이다. 하지만,  `_.isEmpty`는 필자의 의도와 다르게 동작한다.
+필자가 원하는 것은 **파라미터의 값이 비었는지** 확인하는 것이다. 하지만,  `_.isEmpty`는 필자의 의도와 다르게 동작한다.
 
 - `boolean` return **true**
 	- _.isEmpty(true)
@@ -137,7 +137,7 @@ JavaScript로 데이터를 다루다 보면 이렇게 처리해야 하는 경우
 
 필자의 모듈이나 Underscore.js 모듈을 활용해서 각 상황에 맞는 `isEmpty`를 만들어 사용하자.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAwMzAxNTI5OCwtMTQ3NjI0NzY1MCwtMz
+eyJoaXN0b3J5IjpbLTU2NDI3OTU2MCwtMTQ3NjI0NzY1MCwtMz
 AwMjI1MTA4LDczNDkyNzE4NiwtMjk3MjQzMjIyLDEyMzQ0MjY4
 OTUsMTU3MzEyNjcwOSwtMzAxNTg3NTcyXX0=
 -->
