@@ -13,10 +13,6 @@
 
 ## isEmpty
 
-`gist`에 공유한
-
-## isEmpty
-
 `gist`에 공유한 [isEmpty](https://gist.github.com/SangHakLee/4da6159a7a08cdd12132">isEmpty는 문제점이 있다.  `false`)는 문제점이 있다.  `false`  입력 값에 대해선 의도와 다른 동작을 한다.
 
 그래서 최초에 의도한 기능대로 동작하는  `` `isEmpty</code>`를 다시 작성했다.``
@@ -213,5 +209,5 @@ new Error() // Error at &lt;<anonymous&gt;</span>
   
 JavaScript로 데이터를 다루다 보면 이렇게 처리해야 하는 경우가 꽤 생긴다.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMwMTU4NzU3Ml19
+eyJoaXN0b3J5IjpbMTU3MzEyNjcwOSwtMzAxNTg3NTcyXX0=
 -->
