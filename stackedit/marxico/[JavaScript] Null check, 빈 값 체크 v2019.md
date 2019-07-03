@@ -21,7 +21,16 @@
 ### is
 [https://sanghaklee.github.io/is](https://sanghaklee.github.io/is)
 ```javascript
-is.empty('') // true
+const empty = (value) => {
+	if (value === null) return true
+	if (typeof value === 'undefined') return true
+	if (typeof value === 'string' && value === '') return true
+	if (Array.isArray(value) && value.length < 1) return true
+	if (typeof value === 'object' && value.constructor.name === 'Object' && Object.keys(value).length < 1 && Object.getOwnPropertyNames(value) < 1) return true
+	if (typeof value === 'object' && value.constructor.name === 'String' && Object.keys(value).length < 1) return true // new String()
+
+	return false
+}
 ```
 
 ### 빈 값
@@ -91,8 +100,7 @@ new Error() // Error at <anonymous>
 - 위 객체들은 자명하게 값을 리턴
 - JavaScript는 6가지 Primitive를 제외하면 모두 Object
 	- `new Object()`를 제외한 모든 Object는 값이 채워졌다고 판단
-	- 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTI2ODMyNzQxLDEyMzQ0MjY4OTUsMTU3Mz
+eyJoaXN0b3J5IjpbODkwNTY1MTU4LDEyMzQ0MjY4OTUsMTU3Mz
 EyNjcwOSwtMzAxNTg3NTcyXX0=
 -->
