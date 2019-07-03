@@ -6,11 +6,11 @@
 
 세번째 게시글인 만큼 블로그 초장기에 작성한 내용이다.
 시간이 지나 다시 내용을 보니 부족한 점과 잘못된 점이 있었다. 
-이 내용을 고치고 
+이 부분을 바로 잡기 위해 다시 쓰는 글이다.
 
 
 ## isEmpty
-`gist`에 공유한 [isEmpty](https://gist.github.com/SangHakLee/4da6159a7a08cdd12132)는 문제점이 있다.  그 당시엔  왜 그렇게 생각했는지 기억이 나지 않지만,  입력 값 `false`에 대해서 비어있지 않다는 **false**를 리턴하도록 했다.
+`gist`에 공유한 [isEmpty](https://gist.github.com/SangHakLee/4da6159a7a08cdd12132)는 문제점이 있다.  그 당시엔  왜 그렇게 생각했는지 기억이 나지 않지만,  입력 값 `false`에 대해서 비어있지 않다라는 **false**를 리턴하도록 했다.
 
 하지만, isEmpty는 파라미터의 타입 비교 연산 시 `true|false` 를 반환 하느냐에 대한 내용이 아니다.
 
@@ -135,7 +135,7 @@ JavaScript로 데이터를 다루다 보면 이렇게 처리해야 하는 경우
 
 필자의 모듈이나 Underscore.js 모듈을 활용해서 각 상황에 맞는 `isEmpty`를 만들어 사용하자.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjkyNDk1NzUyLDczNDkyNzE4NiwtMjk3Mj
-QzMjIyLDEyMzQ0MjY4OTUsMTU3MzEyNjcwOSwtMzAxNTg3NTcy
-XX0=
+eyJoaXN0b3J5IjpbLTMwMDIyNTEwOCw3MzQ5MjcxODYsLTI5Nz
+I0MzIyMiwxMjM0NDI2ODk1LDE1NzMxMjY3MDksLTMwMTU4NzU3
+Ml19
 -->
