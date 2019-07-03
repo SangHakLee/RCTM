@@ -78,7 +78,7 @@ new Boolean() == false
 - `new` 로  생성하면 타입은 `object`지만 값으로 비교할 땐 false이다.
 	-  `new`로 생성하면 Object
 	-  `false` 등 리터럴로 생성하면 Primitive
-- 
+- [자바스크립트의 원시 타입(Primitive Type)](https://velog.io/@jakeseo_me/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%9D%BC%EB%A9%B4-%EC%95%8C%EC%95%84%EC%95%BC-%ED%95%A0-33%EA%B0%80%EC%A7%80-%EA%B0%9C%EB%85%90-2-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EC%9D%98-%EC%9B%90%EC%8B%9C-%ED%83%80%EC%9E%85Primitive-Type-%EB%B2%88%EC%97%AD)
 - https://stackoverflow.com/questions/17256182/what-is-the-difference-between-string-primitives-and-string-objects-in-javascript
 
 ```javascript
@@ -89,7 +89,8 @@ new RegExp() // /(?:)/
 new Error() // Error at <anonymous>
 ```
 - 위 객체들은 자명하게 값을 리턴
+- JavaScript는 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA3Nzg2MDUzOCwxMjM0NDI2ODk1LDE1Nz
-MxMjY3MDksLTMwMTU4NzU3Ml19
+eyJoaXN0b3J5IjpbLTIwNDM1OTUwMTAsMTIzNDQyNjg5NSwxNT
+czMTI2NzA5LC0zMDE1ODc1NzJdfQ==
 -->
