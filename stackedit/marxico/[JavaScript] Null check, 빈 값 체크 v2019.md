@@ -126,11 +126,13 @@ new Error() // Error at <anonymous>
 
 필자는 앞에서 **빈 값**이라 정의한 파라미터를 제외한 모든 경우를 **채워진 값**으로 판단하고 싶었다.
 JavaScript로 데이터를 다루다 보면 이렇게 처리해야 하는 경우가 꽤 생긴다.
+이러한 요구 때문에 Underscore.js, Lodash의 `_.isEmpty`를 사용하지 않고 새로 만들어서 사용했다.
 
 ### Conclusion
 요구사항에 따라서 **비어 있다**라는 개념은 바뀔 수 있다.
+어떤 경우엔 Underscore.js, Lodash의 `_.isEmpty`가 적합할 수 있고, 어떤 경우엔 필자의 `is.empty`가 적합할 수 잇다
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1OTI5NzQ3NDAsLTI5NzI0MzIyMiwxMj
+eyJoaXN0b3J5IjpbLTExMzgzNTkwMzgsLTI5NzI0MzIyMiwxMj
 M0NDI2ODk1LDE1NzMxMjY3MDksLTMwMTU4NzU3Ml19
 -->
