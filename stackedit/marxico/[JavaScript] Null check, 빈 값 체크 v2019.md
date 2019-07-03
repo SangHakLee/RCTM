@@ -90,8 +90,9 @@ new Error() // Error at <anonymous>
 ```
 - 위 객체들은 자명하게 값을 리턴
 - JavaScript는 6가지 Primitive를 제외하면 모두 Object
-	- `new Object()`를 제외한 모든 
+	- `new Object()`를 제외한 모든 Object는 값이 채워졌다고 판단
+	- 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDM2MzgzNDYzLDEyMzQ0MjY4OTUsMTU3Mz
+eyJoaXN0b3J5IjpbOTI2ODMyNzQxLDEyMzQ0MjY4OTUsMTU3Mz
 EyNjcwOSwtMzAxNTg3NTcyXX0=
 -->
