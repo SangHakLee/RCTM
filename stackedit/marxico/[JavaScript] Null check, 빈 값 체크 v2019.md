@@ -16,11 +16,17 @@
 
 그래서 최초에 의도한 기능대로 동작하는 `isEmpty`를 다시 작성했다.
 
+`is-`로 시작하는 함수 관리하기 위해 `is``is`라는 NPM 모듈로 만들었다.
+
+### is
+[https://sanghaklee.github.io/is](https://sanghaklee.github.io/is)
+```javascript
+is.empty('') // true
+```
+
 ### 빈 값
 `isEmpty`는 파라미터 값이 비었는지 확인한다. **빈 값**이라 정의한 값들은 아래와 같다.
 
-- Number(https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number)
-	- 1
 - [String](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String)
 	- `''`
 	- `new String()`
@@ -79,6 +85,6 @@ new RegExp() // /(?:)/
 new Error() // Error at <anonymous>
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMjkzMjMyOTcsMTIzNDQyNjg5NSwxNT
-czMTI2NzA5LC0zMDE1ODc1NzJdfQ==
+eyJoaXN0b3J5IjpbMTQyMjIyOTMxOCwxMjM0NDI2ODk1LDE1Nz
+MxMjY3MDksLTMwMTU4NzU3Ml19
 -->
