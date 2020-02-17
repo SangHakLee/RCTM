@@ -34,7 +34,8 @@
 > - https://developer.mozilla.org/ko/docs/Web/HTTP/Overview
 > - http://www.ktword.co.kr/abbr_view.php?m_temp1=648
 
-- 클라이언트는 프로토콜(약속)의 상태 코드를 확인하여 요청의 성공|실패를 확인할 수 있다.
+- 클라이언트는 HTTP의 상태 코드를 확인하여 요청의 성공|실패를 확인할 수 있다.
+- 이것은 HTTP를 사용하는 클라이언트와 서버 간의 약속, 프로토콜인 것이다.
 
 **REST**(Representational State Transfer)는 분산 하이퍼미디어 시스템을 위한 소프트웨어 아키텍처이다.
 > REST
