@@ -212,8 +212,8 @@ Link: <https://api.test.com/users?page=3&per_page=100>; rel="next",
 |------------	|-------------	|-------------------	|-----------------------	|-------------------	|
 | /users     	| 사용자 추가 	| 사용자 전체 조회  	| 사용자 추가 or 사용자 수정 	| 사용자 전체 삭제  	|
 | /users/hak 	| 405 ERROR   	| 사용자 'hak' 조회 	| 사용자 'hak' 수정      	| 사용자 'hak' 삭제 	|
-- `PUT /users` 경우 표에선 사용자 추가 or 사용자 수정으로 했지만, 보통 `Colllection`에 PUT 요청은 지원하지 않으므로 **405 ERROR** 응답하기도 한다.
-    - Colllection: `/users/hak` 에서 **users**, 집합
+- `PUT /users` 경우 표에선 사용자 추가 or 사용자 수정으로 했지만, 보통 `Collection`에 PUT 요청은 지원하지 않으므로 **405 ERROR** 응답하기도 한다.
+    - Collection: `/users/hak` 에서 **users**, 집합
     - Document: `/users/hak` 에서 **hak**, 집합에 속한 자원
 
 ## 4.2. OPTIONS, HEAD, PATCH를 사용하여 완성도 높은 API를 만든다.
