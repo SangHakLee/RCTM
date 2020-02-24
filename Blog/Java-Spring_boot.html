@@ -1,0 +1,341 @@
+
+<!DOCTYPE html><html><head><title>[Java] JAVA SPRING BOOT 기초</title><meta charset='utf-8'><link href='https://d31qtcb7c58z3n.cloudfront.net/res-min/themes/marxico.css' rel='stylesheet'><style>
+.note-content  {font-family: 'Helvetica Neue', Arial, 'Hiragino Sans GB', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, Song, sans-serif;}
+
+</style></head><body><div id='preview-contents' class='note-content'>
+                        
+                    
+
+
+
+<h1 id="java-java-spring-boot-기초">[Java] JAVA SPRING BOOT 기초</h1>
+
+<blockquote>
+  <p>2019.10.26 양재동 코드랩 <a href="https://www.codelabs.kr/codelabs/detail?no=77" target="_blank">JAVA SPRING BOOT 기초 #2</a>의 정리</p>
+  
+  <p><a href="https://github.com/SangHakLee/codelab-spring-boot" target="_blank">https://github.com/SangHakLee/codelab-spring-boot</a></p>
+</blockquote>
+
+<ul><li><p>Embeded Tomcat 이용한 단독 실행</p></li>
+<li><p>Spring Actuator: 모니터링과 관리</p></li>
+</ul>
+
+<h2 id="db-setting">DB setting</h2>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-sql hljs"><div class="hljs-line"><span class="hljs-keyword">create</span> <span class="hljs-keyword">database</span> codelab_db <span class="hljs-keyword">default</span> <span class="hljs-built_in">character</span> <span class="hljs-keyword">set</span> utf8;
+</div><div class="hljs-line"><wbr>
+</div><div class="hljs-line"><span class="hljs-keyword">grant</span> all <span class="hljs-keyword">privileges</span> <span class="hljs-keyword">on</span> codelab_db.* <span class="hljs-keyword">to</span> codelab@localhost <span class="hljs-keyword">identified</span> <span class="hljs-keyword">by</span> <span class="hljs-string">'codelab'</span>;
+</div><div class="hljs-line"><wbr>
+</div><div class="hljs-line"><span class="hljs-keyword">flush</span> <span class="hljs-keyword">privileges</span>;
+</div></code></pre>
+
+
+
+<h4 id="오류">오류</h4>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="hljs sql"><div class="hljs-line">You must <span class="hljs-keyword">reset</span> your <span class="hljs-keyword">password</span> <span class="hljs-keyword">using</span> <span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">USER</span> <span class="hljs-keyword">statement</span> <span class="hljs-keyword">before</span> executing this statement.
+</div></code></pre>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="hljs gams"><div class="hljs-line">mysql&gt; <span class="hljs-keyword">set</span> password <span class="hljs-comment">= password(</span><span class="hljs-comment">'PASSWORD'</span><span class="hljs-comment">)</span>;
+</div></code></pre>
+
+<p><a href="https://kogun82.tistory.com/122" target="_blank">https://kogun82.tistory.com/122</a></p>
+
+
+
+<h1 id="실습-1">실습 1</h1>
+
+
+
+<h2 id="intellij">IntelliJ</h2>
+
+<ol><li rel="1"><p>Create Project - Spring initializr</p></li>
+<li rel="2"><p>New Project</p></li>
+<li rel="3"><p>Dependencies</p>
+
+<ol>
+<li rel="4"><p>Dev Tools - <code>lombok</code></p></li>
+<li rel="5"><p>WEB - <code>Spring Web</code></p></li>
+<li rel="6"><p>SQL - <code>Spring Data JPA, MySQL Driver</code></p></li></ol></li>
+</ol>
+
+
+
+<h3 id="db-연결-정보-셋팅">DB 연결 정보 셋팅</h3>
+
+<ol start="1"><li rel="1"><p><code>src</code> - <code>main</code> - <code>resources</code></p>
+
+<ol>
+<li rel="1"><p>application.properties 삭제</p></li>
+<li rel="1"><p>application.yml 만들기</p>
+
+<pre class="prettyprint hljs-dark"><code class="language-yaml hljs"><div class="hljs-line"><span class="hljs-attr">spring:</span>
+</div><div class="hljs-line"><span class="hljs-attr">  datasource:</span>
+</div><div class="hljs-line"><span class="hljs-attr">    url:</span> <span class="hljs-attr">jdbc:mysql://127.0.0.1:3306/codelab_db?serverTimezone=Asia/Seoul&amp;useSSL=false&amp;characterEncoding=utf-8</span>
+</div><div class="hljs-line"><span class="hljs-attr">    username:</span> <span class="hljs-string">codelab</span>
+</div><div class="hljs-line"><span class="hljs-attr">    password:</span> <span class="hljs-string">codelab</span>
+</div><div class="hljs-line"><span class="hljs-attr">    driver-class-name:</span> <span class="hljs-string">com.mysql.jdbc.Driver</span>
+</div><div class="hljs-line"><span class="hljs-attr">  jpa:</span>
+</div><div class="hljs-line"><span class="hljs-attr">    hibernate:</span>
+</div><div class="hljs-line"><span class="hljs-attr">      ddl-auto:</span> <span class="hljs-string">update</span> <span class="hljs-comment"># 없으면 만들고 있으면 그대로 사용</span>
+</div><div class="hljs-line"><span class="hljs-attr">    show-sql:</span> <span class="hljs-string">true</span> <span class="hljs-comment"># mysql debug mode, 실제 쿼리가 로그로 보임</span>
+</div><div class="hljs-line"><span class="hljs-attr">    database-platform:</span> <span class="hljs-string">org.hibernate.dialect.MySQL5InnoDBDialect</span>
+</div><div class="hljs-line"><span class="hljs-attr">    properties:</span>
+</div><div class="hljs-line"><span class="hljs-attr">      hibernate:</span> <span class="hljs-comment"># custom options</span>
+</div><div class="hljs-line"><span class="hljs-attr">        format_sql:</span> <span class="hljs-string">true</span> <span class="hljs-comment"># sql 로그를 포매팅해서 보여줌</span>
+</div><div class="hljs-line"><span class="hljs-attr">logging:</span>
+</div><div class="hljs-line"><span class="hljs-attr">  level:</span>
+</div><div class="hljs-line">    <span class="hljs-string">org.hibernate.type:</span> <span class="hljs-string">trace</span> <span class="hljs-comment"># bind 쿼리의 내용까지 출력. ? 부분이 실제 값으로 표현됨</span>
+</div><div class="hljs-line"><span class="hljs-attr">server:</span>
+</div><div class="hljs-line"><span class="hljs-attr">  port:</span> <span class="hljs-number">8080</span>
+</div></code></pre></li></ol></li>
+</ol>
+
+<hr>
+
+<ul><li><p>ddl-auto</p>
+
+<ul>
+<li><p>update: 없으면 만들고 있으면 그대로 사용</p></li>
+<li><p>create: 무조건 새로 만듦 </p></li></ul></li>
+</ul>
+
+
+
+<h3 id="기본-컨트롤러-작성">기본 컨트롤러  작성</h3>
+
+<ol start="1"><li rel="1"><p><code>src</code> - <code>main</code> - <code>java</code> - <code>kr.codelabs.member</code></p>
+
+<ol>
+<li rel="1"><p>package: controller</p></li>
+<li rel="1"><p>class: <strong>MyController</strong></p>
+
+<ol>
+<li rel="1"><p><code>@RestController</code></p></li>
+<li rel="1"><p><code>@GetMapping</code></p></li></ol></li></ol></li>
+</ol>
+
+<p><strong>RUN!!</strong></p>
+
+
+
+<h1 id="실습-2">실습 2</h1>
+
+
+
+<h2 id="db">DB</h2>
+
+<ol><li rel="1"><p><code>src</code> - <code>main</code> - <code>java</code> - <code>kr.codelabs.member</code></p></li>
+<li rel="1"><p>Department</p>
+
+<ol>
+<li rel="1"><p>package: entity</p></li>
+<li rel="1"><p>class: <strong>Department</strong></p>
+
+<ol>
+<li rel="1"><p><code>@Entity</code></p></li>
+<li rel="1"><p><code>@Table</code></p></li>
+<li rel="1"><p><code>@Getter</code></p></li></ol></li></ol></li>
+<li rel="1"><p>DepartmentRepository</p>
+
+<ol>
+<li rel="1"><p>package: repository</p></li>
+<li rel="1"><p>interface: <strong>DepartmentRepository</strong></p></li></ol></li>
+<li rel="1"><p>DepartmentService</p>
+
+<ol>
+<li rel="1"><p>package: service</p></li>
+<li rel="1"><p>interface: <strong>DepartmentService</strong></p></li></ol></li>
+<li rel="1"><p>DepartmentController</p>
+
+<ol>
+<li rel="1"><p>package: controller</p></li>
+<li rel="1"><p>class: <strong>DepartmentController</strong></p></li></ol></li>
+</ol>
+
+
+
+<h2 id="crud">CRUD</h2>
+
+
+
+<h3 id="get">GET</h3>
+
+<ul><li><p><code>@PathVariable</code></p></li>
+<li><p><code>@RequestParam</code></p></li>
+</ul>
+
+
+
+<h3 id="post">POST</h3>
+
+<ul><li><p><code>@RequestBody</code></p></li>
+</ul>
+
+
+
+<h2 id="member">Member</h2>
+
+
+
+<h2 id="swagger">Swagger</h2>
+
+<p><a href="https://mvnrepository.com/artifact/io.springfox/springfox-swagger2" target="_blank">https://mvnrepository.com/artifact/io.springfox/springfox-swagger2</a></p>
+
+
+
+<h3 id="1-dependency-추가">1. dependency 추가</h3>
+
+<p><code>pom.xml</code></p>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-xml hljs"><div class="hljs-line"><wbr>
+</div><div class="hljs-line"><span class="hljs-comment">&lt;!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 --&gt;</span>
+</div><div class="hljs-line"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+</div><div class="hljs-line">    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.springfox<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+</div><div class="hljs-line">    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>springfox-swagger2<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+</div><div class="hljs-line">    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.9.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+</div><div class="hljs-line"><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+</div><div class="hljs-line"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+</div><div class="hljs-line">    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.springfox<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+</div><div class="hljs-line">    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+</div><div class="hljs-line">    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.9.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+</div><div class="hljs-line"><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+</div></code></pre>
+
+
+
+<h3 id="config">config</h3>
+
+<ol><li rel="1"><p>package: config</p></li>
+<li rel="1"><p>class: SwaggerConfig</p></li>
+<li rel="1"><p>ApiOperation (각 컨트롤러)</p></li>
+</ol>
+
+
+
+<h3 id="swagger-ui">swagger-ui</h3>
+
+<p><a href="http://127.0.0.1:8080/swagger-ui.html" target="_blank">http://127.0.0.1:8080/swagger-ui.html</a></p>
+
+
+
+<h2 id="oauth-인증-서버-구현">OAuth 인증 서버 구현</h2>
+
+
+
+<h3 id="db-1">DB</h3>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="hljs haskell"><div class="hljs-line"><span class="hljs-title">src</span> - main - resources
+</div><div class="hljs-line">    /<span class="hljs-class"><span class="hljs-keyword">data</span>.sql</span>
+</div><div class="hljs-line">    /schema.sql
+</div></code></pre>
+
+<ul><li><p><a href="https://raw.githubusercontent.com/mac2me/spring-oauth-server/master/OAuthServer/src/main/resources/data.sql" target="_blank">data.sql</a></p></li>
+<li><p><a href="https://raw.githubusercontent.com/mac2me/spring-oauth-server/master/OAuthServer/src/main/resources/schema.sql" target="_blank">schema.sql</a></p></li>
+</ul>
+
+
+
+<h4 id="applicationyml">application.yml</h4>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-yaml hljs"><div class="hljs-line"><span class="hljs-attr">initialization-mode:</span> <span class="hljs-string">always</span> <span class="hljs-comment"># spring 구동 시 resources 하위 .sql 실행</span>
+</div><div class="hljs-line"><span class="hljs-attr">continue-on-error:</span> <span class="hljs-string">true</span> <span class="hljs-comment"># 에러나도 실행. 개발에서만 사용</span>
+</div></code></pre>
+
+
+
+<h3 id="api-서버">API 서버</h3>
+
+
+
+<h4 id="pomxml">pom.xml</h4>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-xml hljs"><div class="hljs-line">    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+</div><div class="hljs-line">        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+</div><div class="hljs-line">         <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-oauth2<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+</div><div class="hljs-line">     <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+</div><div class="hljs-line">     <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+</div><div class="hljs-line">         <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+</div><div class="hljs-line">         <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-security<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+</div><div class="hljs-line">     <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+</div><div class="hljs-line"><span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span>
+</div><div class="hljs-line"><wbr>
+</div><div class="hljs-line"><span class="hljs-tag">&lt;<span class="hljs-name">dependencyManagement</span>&gt;</span>
+</div><div class="hljs-line">   <span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
+</div><div class="hljs-line">        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+</div><div class="hljs-line">            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+</div><div class="hljs-line">            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-dependencies<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+</div><div class="hljs-line">            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${spring-cloud.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+</div><div class="hljs-line">            <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>pom<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+</div><div class="hljs-line">            <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>import<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span>
+</div><div class="hljs-line">        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+</div><div class="hljs-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span>
+</div><div class="hljs-line"><span class="hljs-tag">&lt;/<span class="hljs-name">dependencyManagement</span>&gt;</span>
+</div><div class="hljs-line"><wbr>
+</div><div class="hljs-line"><span class="hljs-tag">&lt;<span class="hljs-name">repositories</span>&gt;</span>
+</div><div class="hljs-line">    <span class="hljs-tag">&lt;<span class="hljs-name">repository</span>&gt;</span>
+</div><div class="hljs-line">        <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>spring-milestones<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+</div><div class="hljs-line">        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Spring Milestones<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+</div><div class="hljs-line">        <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>https://repo.spring.io/milestone<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
+</div><div class="hljs-line">    <span class="hljs-tag">&lt;/<span class="hljs-name">repository</span>&gt;</span>
+</div><div class="hljs-line"><span class="hljs-tag">&lt;/<span class="hljs-name">repositories</span>&gt;</span>
+</div></code></pre>
+
+<ul><li><p>dependency</p>
+
+<ul>
+<li><p>spring-cloud-starter-oauth2</p></li>
+<li><p>spring-cloud-starter-security</p></li></ul></li>
+<li><p>dependencyManagement</p></li>
+<li><p>repositories</p></li>
+</ul>
+
+
+
+<h2 id="spring-boot-actuator">Spring Boot Actuator</h2>
+
+<p><a href="https://www.baeldung.com/spring-boot-actuators" target="_blank">https://www.baeldung.com/spring-boot-actuators</a></p>
+
+<ul><li><p><a href="http://localhost:8080/actuator/health" target="_blank">http://localhost:8080/actuator/health</a></p></li>
+<li><p><a href="http://localhost:8080/actuator/env" target="_blank">http://localhost:8080/actuator/env</a></p></li>
+</ul>
+
+
+
+<h3 id="jconsole">jconsole</h3>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-bash hljs"><div class="hljs-line">$ jconsole
+</div></code></pre>
+
+
+
+<h1 id="배포">배포</h1>
+
+<p>사전에 maven 설치</p>
+
+
+
+<pre class="prettyprint hljs-dark"><code class="language-bash hljs"><div class="hljs-line">$ mvn package
+</div><div class="hljs-line"><wbr>
+</div><div class="hljs-line">$ <span class="hljs-built_in">cd</span> target <span class="hljs-comment"># .jar 파일이 생성됨</span>
+</div><div class="hljs-line"><wbr>
+</div><div class="hljs-line">$ java -jar NAME.jar
+</div></code></pre>
+
+<p>zard21@gmail.com</p></div></body></html>
