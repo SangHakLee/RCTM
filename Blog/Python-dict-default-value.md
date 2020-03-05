@@ -11,10 +11,19 @@ dict = {
 }
 dict.get('name') # 'hak'
 dict.get('age') # ''
+dict.get('age', 30) # 30
 dict.get('age') or 30 # 30
 ```
+- [.get()](https://docs.python.org/3/library/stdtypes.html?highlight=get#dict.get) 메소드의 두번째 파라미터에 기본 값을 줄 수 있다.
+	- 두번째 파라미터의 디폴트는 [None](https://docs.python.org/3/c-api/none.html)이고, 디폴트 값이 있기 때문에 [KeyError](https://docs.python.org/3/library/exceptions.html#KeyError)는 발생하지 않는다.
+- [or](https://python-reference.readthedocs.io/en/latest/docs/operators/or.html) 연사자를 이용해 딕셔너리의 항목에 기본 값을 줄 수 있다.
+	- `.get()`의 디폴트 `None`은 논리 연산 시 [False](https://docs.python.org/3/library/constants.html?highlight=false#False)로 판별되는 원리를 이용해 기본 값을 설정한다.
+	- Javascipt에서 다음과 같이 기본 값을 설정하는 원리와 동일하다.
+	```javascript
+	var name = dict.age || 30
+	```
 
-`or` 연사자를 이용해 딕셔너리의 항목에 기본값을 줄 수 있다.
+**`KeyError`를 발생시키지 않는 `.get()`를 사용하는 것을 추천한다.**
 
 
 ## 딕셔너리 사용법
@@ -59,8 +68,8 @@ name = dict.get('name') or 'hak'
 > `.get()`, `or` 매우 직관적이다.
 
 
-<iframe height="500px" width="100%" src="https://repl.it/@ryan0425/dict-get?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<iframe height="400px" width="100%" src="https://repl.it/@ryan0425/dict-get?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 ---
 
-<iframe height="500px" width="100%" src="https://repl.it/@ryan0425/JS-object-default?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<iframe height="400px" width="100%" src="https://repl.it/@ryan0425/JS-object-default?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
