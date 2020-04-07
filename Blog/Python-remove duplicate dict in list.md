@@ -1,4 +1,5 @@
-# Python 리스트 딕셔너리 중복 제거 
+
+# [Python ]리스트 딕셔너리 중복 제거
 > python how to remove duplicate dict in list
 > 
 > https://stackoverflow.com/questions/11092511/python-list-of-unique-dictionaries
@@ -6,7 +7,11 @@
 ## dict 전체 중복
 
 ```python
+# 순서가 보장되지 않음
 list(map(dict, set(tuple(sorted(d.items())) for d in data)))
+
+# 순서가 보장됨
+list(map(dict, collections.OrderedDict.fromkeys(tuple(sorted(d.items())) for d in data)))
 ```
 
 
@@ -20,9 +25,11 @@ data = [
 	{'id': 1, 'name': 'hak', 'age': 30},
 ]
 
-data = list(map(dict, set(tuple(sorted(d.items())) for d in data)))
+data1 = list(map(dict, set(tuple(sorted(d.items())) for d in data)))
+data2 = list(map(dict, set(tuple(sorted(d.items())) for d in data)))
 
-print(data)
+print(data1)
+print(data2)
 ```
 
 ## dict 특정 key 중복
