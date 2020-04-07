@@ -1,5 +1,5 @@
 
-# [Python ]리스트 딕셔너리 중복 제거
+# [Python] 리스트 딕셔너리 중복 제거
 > python how to remove duplicate dict in list
 > 
 > https://stackoverflow.com/questions/11092511/python-list-of-unique-dictionaries
