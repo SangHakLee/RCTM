@@ -26,7 +26,7 @@ data = [
 ]
 
 data1 = list(map(dict, set(tuple(sorted(d.items())) for d in data)))
-data2 = list(map(dict, set(tuple(sorted(d.items())) for d in data)))
+data2 = list(map(dict, collections.OrderedDict.fromkeys(tuple(sorted(d.items())) for d in data)))
 
 print(data1)
 print(data2)
