@@ -18,7 +18,7 @@
 - [References](#references)
 
 ### TLTR; Solution
-JaCoCo의 [Offline Instrumentation](https://github.com/powermock/powermock/wiki/Code-coverage-with-JaCoCo#offline-instrumentation) 방식을 사용하면 제대로 된 코드 커버리지를 측정할 수 있다 . (예제 프로젝트 https://github.com/SangHakLee/jacoco-offline-gradle)
+JaCoCo의 [Offline Instrumentation](https://github.com/powermock/powermock/wiki/Code-coverage-with-JaCoCo#offline-instrumentation) 방식을 사용하면 제대로 된 코드 커버리지를 측정할 수 있다. (예제 프로젝트 https://github.com/SangHakLee/jacoco-offline-gradle)
 
 
 ## coverage report
@@ -42,7 +42,7 @@ JaCoCo가 코드 커버리지를 측정할 수 있는 이유는 런타임 환경
 > JaCoCo는 기본적으로  Java Agent를 이용해서 [On-the-fly](https://www.jacoco.org/jacoco/trunk/doc/implementation.html) 방식으로 바이트 코드를 조작한다.
 > 
 > `On-the-fly`는 즉석에서라는 뜻이다.
-> `On-the-fly`는 코드 커버리지 측정 시 런타임 환경(JRE)의 [클래스 로더](https://ko.wikipedia.org/wiki/%EC%9E%90%EB%B0%94_%ED%81%B4%EB%9E%98%EC%8A%A4%EB%A1%9C%EB%8D%94)가 `.class` 바이트 코드를 읽고 런타임에 실행하는 순간에 코드를 조작한다. (**런타임**의 클래스 로더가 바이트 코드를 로드하는 시점)
+> `On-the-fly`는 코드 커버리지 측정 시 런타임 환경(JRE)의 [클래스 로더](https://ko.wikipedia.org/wiki/%EC%9E%90%EB%B0%94_%ED%81%B4%EB%9E%98%EC%8A%A4%EB%A1%9C%EB%8D%94)가 `.class` 바이트 코드를 읽고 런타임에 실행하는 순간에 코드를 조작한다. (**런타임**의 [클래스 로더](https://www.javatpoint.com/classloader-in-java)가 바이트 코드를 로드하는 시점)
 > 
 > 따라서, 클래스 파일을 보면 바이트 코드 자체는 조작된 것이 없다. (정적인 바이트 코드는 그대로 두고 로드하면서 메모리에서 조작)
 > 
